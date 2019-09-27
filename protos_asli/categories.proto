@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package protos;
+
+message GetCategoriesRequest {}
+
+message Category {
+  int64 id = 1;
+  string name = 2;
+  int64 parent_id = 3;
+}
+
+message Categories {
+    repeated Category category = 1;
+  }

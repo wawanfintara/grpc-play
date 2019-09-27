@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package protos;
+
+import "products.proto";
+import "categories.proto";
+
+service LocalServices {
+  rpc GetProducts(GetProductsRequest) returns (GetProductsResponse) {}
+  rpc GetProductDetail(GetProductDetailRequest) returns (GetProductDetailResponse) {}
+  rpc GetCategories(GetCategoriesRequest) returns (Categories) {}
+}
