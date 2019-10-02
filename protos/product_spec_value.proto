@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+option go_package = "localservices";
+
+message ProductSpecValue {
+    int64 id = 1;
+    string name = 2;
+    int64 product_spec_set_id = 3;
+}
+
+message CreateProductSpecValueRequest {
+    ProductSpecValue spec_value = 1;
+}
+
+message CreateProductSpecValueResponse {}
+
+message GetProductSpecValuesRequest {}
+
+message GetProductSpecValuesResponse {
+    repeated ProductSpecValue spec_value = 1;
+}
+
+message GetProductSpecValueByIdRequest {
+    int64 id = 1;
+}
+
+message GetProductSpecValueByIdResponse {
+    ProductSpecValue spec_value = 1;
+}
+
+message UpdateProductSpecValueRequest {
+    ProductSpecValue spec_value = 1;
+}
+
+message UpdateProductSpecValueResponse {}
+
+message DeleteProductSpecValueRequest {
+    int64 id = 1;
+}
+
+message DeleteProductSpecValueResponse {}
+
+message ProductSpecValueMap {
+    int64 id = 1;
+    int64 vendor_id = 2;
+    int64 product_spec_value_id = 3;
+    int64 product_vendor_spec_value_id = 4;
+    int64 vendor_spec_value_id = 5;
+    int64 product_id = 6;
+}
+
+message CreateProductSpecValueMapRequest {
+    ProductSpecValueMap spec_value_map = 1;
+}
+
+message CreateProductSpecValueMapResponse {}
+
+message GetProductSpecValueMapsRequest {}
+
+message GetProductSpecValueMapsResponse {
+    repeated ProductSpecValueMap spec_value_map = 1;
+}
+
+message GetProductSpecValueMapByIdRequest {
+    int64 id = 1;
+}
+
+message GetProductSpecValueMapByIdResponse {
+    ProductSpecValueMap spec_value_map = 1;
+}
+
+message UpdateProductSpecValueMapRequest {
+    ProductSpecValueMap spec_value_map = 1;
+}
+
+message UpdateProductSpecValueMapResponse {}
+
+message DeleteProductSpecValueMapRequest {
+    int64 id = 1;
+}
+
+message DeleteProductSpecValueMapResponse {}

@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option go_package = "localservices";
+
+message Area {
+    int64 district_id = 1;
+    int64 city_id = 2;
+    int64 province_id = 3;
+}
+
+message GetProductPriceRequest {
+    int64 product_id = 1;
+    string spec_set = 2;
+    Area area = 3;
+    int64 quantity = 4;
+}
+
+message GetProductPriceResponse {
+    repeated Price prices = 1;
+}
+
+message Price {
+    int64 qty = 1;
+    string unit = 2;
+    PartnerLocation partner = 3;
+    repeated PriceOption option = 4;
+}
+
+message PartnerLocation {
+    double lat = 1;
+    double long = 2;
+}
+
+message PriceOption {
+    string production_finish_date = 1;
+    int64 duration = 2;
+    int64 weight = 3;
+    int64 unit_price = 4;
+    int64 price = 5;
+}

@@ -1,21 +1,79 @@
 syntax = "proto3";
 
-package protos;
+option go_package = "localservices";
 
 import "products.proto";
+import "product_price.proto";
+import "product_spec_map.proto";
+import "product_spec_set.proto";
+import "product_spec_value.proto";
+import "order.proto";
+import "payment.proto";
 import "categories.proto";
 import "order.proto";
+import "transaction.proto";
+import "area_coverage.proto";
 
 service LocalServices {
     // Product
     rpc GetProducts(GetProductsRequest) returns (GetProductsResponse) {}
     rpc GetProductDetail(GetProductDetailRequest) returns (GetProductDetailResponse) {}
+    rpc GetProductPrice(GetProductPriceRequest) returns (GetProductPriceResponse) {}
     
     // Category
     rpc GetCategories(GetCategoriesRequest) returns (Categories) {}
+    rpc GetCategoryMaps(GetCategoryMapsRequest) returns (GetCategoryMapsResponse) {}
+    rpc GetCategoryMapByID(GetCategoryMapByIdRequest) returns (GetCategoryMapByIdResponse) {}
+    rpc CreateCategoryMap(CreateCategoryMapRequest) returns (CreateCategoryMapResponse) {}
+    rpc UpdateCategoryMap(UpdateCategoryMapRequest) returns (UpdateCategoryMapResponse) {}
+    rpc DeleteCategoryMap(DeleteCategoryMapRequest) returns (DeleteCategoryMapResponse) {}
     
     // Order
     rpc GetOrder(GetOrderRequest) returns (Order) {}
     rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse) {}
     rpc UpdateOrder(UpdateOrderStatusRequest) returns (UpdateOrderStatusResponse) {}
+    
+    // ProductSpecSet
+    rpc GetProductSpecSets(GetProductSpecSetsRequest) returns (GetProductSpecSetsResponse) {}
+    rpc GetProductSpecSetByID(GetProductSpecSetByIdRequest) returns (GetProductSpecSetByIdResponse) {}
+    rpc CreateProductSpecSet(CreateProductSpecSetRequest) returns (CreateProductSpecSetResponse) {}
+    rpc UpdateProductSpecSet(UpdateProductSpecSetRequest) returns (UpdateProductSpecSetResponse) {}
+    rpc DeleteProductSpecSet(DeleteProductSpecSetRequest) returns (DeleteProductSpecSetResponse) {}
+    
+    // ProductSpecSetMap
+    rpc GetProductSpecSetMaps(GetProductSpecSetMapsRequest) returns (GetProductSpecSetMapsResponse) {}
+    rpc GetProductSpecSetMapByID(GetProductSpecSetMapByIdRequest) returns (GetProductSpecSetMapByIdResponse) {}
+    rpc CreateProductSpecSetMap(CreateProductSpecSetMapRequest) returns (CreateProductSpecSetMapResponse) {}
+    rpc UpdateProductSpecSetMap(UpdateProductSpecSetMapRequest) returns (UpdateProductSpecSetMapResponse) {}
+    rpc DeleteProductSpecSetMap(DeleteProductSpecSetMapRequest) returns (DeleteProductSpecSetMapResponse) {}
+
+    // ProductSpecValue
+    rpc GetProductSpecValues(GetProductSpecValuesRequest) returns (GetProductSpecValuesResponse) {}
+    rpc GetProductSpecValueByID(GetProductSpecValueByIdRequest) returns (GetProductSpecValueByIdResponse) {}
+    rpc CreateProductSpecValue(CreateProductSpecValueRequest) returns (CreateProductSpecValueResponse) {}
+    rpc UpdateProductSpecValue(UpdateProductSpecValueRequest) returns (UpdateProductSpecValueResponse) {}
+    rpc DeleteProductSpecValue(DeleteProductSpecValueRequest) returns (DeleteProductSpecValueResponse) {}
+
+    // ProductSpecValueMap
+    rpc GetProductSpecValueMaps(GetProductSpecValueMapsRequest) returns (GetProductSpecValueMapsResponse) {}
+    rpc GetProductSpecValueMapByID(GetProductSpecValueMapByIdRequest) returns (GetProductSpecValueMapByIdResponse) {}
+    rpc CreateProductSpecValueMap(CreateProductSpecValueMapRequest) returns (CreateProductSpecValueMapResponse) {}
+    rpc UpdateProductSpecValueMap(UpdateProductSpecValueMapRequest) returns (UpdateProductSpecValueMapResponse) {}
+    rpc DeleteProductSpecValueMap(DeleteProductSpecValueMapRequest) returns (DeleteProductSpecValueMapResponse) {}
+
+    // Payment
+
+
+    // TransactionFulfillment
+    rpc GetTxFulfillments(GetTxFulfillmentsRequest) returns (GetTxFulfillmentsResponse) {}
+    rpc GetTxFulfillmentById(GetTxFulfillmentByIdRequest) returns (GetTxFulfillmentByIdResponse) {}
+    rpc CreateTxFulfillment(CreateTxFulfillmentRequest) returns (CreateTxFulfillmentResponse) {}
+    rpc UpdateTxFulfillment(UpdateTxFulfillmentRequest) returns (UpdateTxFulfillmentResponse) {}
+
+    // VendorSubprovinceCoverage
+    rpc GetVendorSubprovinceCoverages(GetVendorSubprovinceCoveragesRequest) returns (GetVendorSubprovinceCoveragesResponse) {}
+    rpc GetVendorSubprovinceCoverageByID(GetVendorSubprovinceCoverageByIdRequest) returns (GetVendorSubprovinceCoverageByIdResponse) {}
+    rpc CreateVendorSubprovinceCoverage(CreateVendorSubprovinceCoverageRequest) returns (CreateVendorSubprovinceCoverageResponse) {}
+    rpc UpdateVendorSubprovinceCoverage(UpdateVendorSubprovinceCoverageRequest) returns (UpdateVendorSubprovinceCoverageResponse) {}
+
 }

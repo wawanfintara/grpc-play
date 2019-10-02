@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package protos;
+
+import "products.proto";
+import "categories.proto";
+import "order.proto";
+
+service LocalServices {
+    // Product
+    rpc GetProducts(GetProductsRequest) returns (GetProductsResponse) {}
+    rpc GetProductDetail(GetProductDetailRequest) returns (GetProductDetailResponse) {}
+    
+    // Category
+    rpc GetCategories(GetCategoriesRequest) returns (Categories) {}
+    
+    // Order
+    rpc GetOrder(GetOrderRequest) returns (Order) {}
+    rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse) {}
+    rpc UpdateOrder(UpdateOrderStatusRequest) returns (UpdateOrderStatusResponse) {}
+}

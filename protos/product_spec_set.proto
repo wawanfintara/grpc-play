@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+option go_package = "localservices";
+
+message ProductSpecSet {
+    int64 id = 1;
+    string name = 2;
+}
+
+message CreateProductSpecSetRequest {
+    ProductSpecSet spec_set = 1;
+}
+
+message CreateProductSpecSetResponse {}
+
+message GetProductSpecSetsRequest {}
+
+message GetProductSpecSetsResponse {
+    repeated ProductSpecSet spec_set = 1;
+}
+
+message GetProductSpecSetByIdRequest {
+    int64 id = 1;
+}
+
+message GetProductSpecSetByIdResponse {
+    ProductSpecSet spec_set = 1;
+}
+
+message UpdateProductSpecSetRequest {
+    ProductSpecSet spec_set = 1;
+}
+
+message UpdateProductSpecSetResponse {}
+
+message DeleteProductSpecSetRequest {
+    int64 id = 1;
+}
+
+message DeleteProductSpecSetResponse {}
+
+message ProductSpecSetMap {
+    int64 id = 1;
+	int64 vendor_id = 2;
+	int64 product_spec_set_id = 3;
+	int64 product_vendor_spec_set_id = 4;
+}
+
+message CreateProductSpecSetMapRequest {
+    ProductSpecSetMap spec_set_map = 1;
+}
+
+message CreateProductSpecSetMapResponse {}
+
+message GetProductSpecSetMapsRequest {}
+
+message GetProductSpecSetMapsResponse {
+    repeated ProductSpecSetMap spec_set_map = 1;
+}
+
+message GetProductSpecSetMapByIdRequest {
+    int64 id = 1;
+}
+
+message GetProductSpecSetMapByIdResponse {
+    ProductSpecSetMap spec_set_map = 1;
+}
+
+message UpdateProductSpecSetMapRequest {
+    ProductSpecSetMap spec_set_map = 1;
+}
+
+message UpdateProductSpecSetMapResponse {}
+
+message DeleteProductSpecSetMapRequest {
+    int64 id = 1;
+}
+
+message DeleteProductSpecSetMapResponse {}

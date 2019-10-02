@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "localservices";
+package protos;
 
 import "google/protobuf/timestamp.proto";
 
