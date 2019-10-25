@@ -4,13 +4,12 @@ option go_package = "localservices";
 
 import "products.proto";
 import "product_price.proto";
-import "product_spec_map.proto";
 import "product_spec_set.proto";
 import "product_spec_value.proto";
 import "order.proto";
+import "checkoutinternal.proto";
 import "payment.proto";
 import "categories.proto";
-import "order.proto";
 import "transaction.proto";
 import "area_coverage.proto";
 
@@ -62,7 +61,13 @@ service LocalServices {
     rpc DeleteProductSpecValueMap(DeleteProductSpecValueMapRequest) returns (DeleteProductSpecValueMapResponse) {}
 
     // Payment
-
+    rpc CreatePayment(CreatePaymentRequest) returns (CreatePaymentResponse) {}
+    rpc CreatePaymentDetail(CreatePaymentDetailRequest) returns (CreatePaymentDetailResponse) {}
+    rpc GetPaymentData(GetPaymentRequest) returns (GetPaymentResponse) {}
+    rpc GetPaymentDetail(GetPaymentDetailRequest) returns (GetPaymentDetailResponse) {}
+    rpc GetPaymentDetailByPayment(GetPaymentDetailRequest) returns (GetPaymentDetailsResponse) {}
+    rpc UpdatePaymentData(UpdatePaymentDataRequest) returns (UpdatePaymentDataResponse) {}
+    rpc UpdatePaymentDetail(UpdatePaymentDetailRequest) returns (UpdatePaymentDetailResponse) {}
 
     // TransactionFulfillment
     rpc GetTxFulfillments(GetTxFulfillmentsRequest) returns (GetTxFulfillmentsResponse) {}
@@ -76,4 +81,6 @@ service LocalServices {
     rpc CreateVendorSubprovinceCoverage(CreateVendorSubprovinceCoverageRequest) returns (CreateVendorSubprovinceCoverageResponse) {}
     rpc UpdateVendorSubprovinceCoverage(UpdateVendorSubprovinceCoverageRequest) returns (UpdateVendorSubprovinceCoverageResponse) {}
 
+    // Checkout Internal
+    rpc CheckoutValidation(CheckoutValidationRequest) returns (CheckoutValidationResponse) {}
 }
