@@ -30,7 +30,6 @@ service LocalServices {
     // Order
     rpc GetOrder(GetOrderRequest) returns (Order) {}
     rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse) {}
-    rpc UpdateOrder(UpdateOrderStatusRequest) returns (UpdateOrderStatusResponse) {}
     
     // ProductSpecSet
     rpc GetProductSpecSets(GetProductSpecSetsRequest) returns (GetProductSpecSetsResponse) {}
