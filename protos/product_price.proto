@@ -13,6 +13,7 @@ message GetProductPriceRequest {
     string spec_set = 2;
     Area area = 3;
     int64 quantity = 4;
+    int64 tkp_user_id = 5;
 }
 
 message GetProductPriceResponse {
