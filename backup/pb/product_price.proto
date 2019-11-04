@@ -24,24 +24,18 @@ message Price {
     int64 qty = 1;
     string unit = 2;
     PartnerLocation partner = 3;
-    repeated PriceOption options = 4;
-    int64 tkp_district_id = 5;
+    repeated PriceOption option = 4;
 }
 
 message PartnerLocation {
     double lat = 1;
     double long = 2;
-    int64 id = 3;
-    string name = 4;
-    string address = 5;
 }
 
 message PriceOption {
     string production_finish_date = 1;
-    int64 duration = 2; // production_speed
+    int64 duration = 2;
     int64 weight = 3;
     int64 unit_price = 4;
     int64 price = 5;
-    int64 volume = 6;
-    int64 price_id = 7; // partner price id, for creating order
 }

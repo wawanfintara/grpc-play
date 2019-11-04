@@ -1,0 +1,118 @@
+syntax = "proto3";
+
+option go_package = "localservices";
+
+import "google/protobuf/timestamp.proto";
+
+message Product {
+  int64 id = 1;
+  int64 vendor_id = 2;
+  string vendor_name = 3;
+  int64 category_id = 4;
+  string category_name = 5;
+  string code = 6;
+  string name = 7;
+  string description = 8;
+  string unit = 9;
+  double start_from = 10;
+  repeated string images = 11;
+  int64 status = 12;
+  google.protobuf.Timestamp created_time = 13;
+  google.protobuf.Timestamp updated_time = 14;
+  string info = 15;
+}
+
+message CreateProductRequest {
+  Product product = 1;
+}
+
+message CreateProductResponse {}
+
+message GetProductsRequest {
+  string category = 1;
+}
+
+message GetProductsResponse {
+  repeated Product products = 1;
+}
+
+message GetProductByIdRequest {
+  int64 id = 1;
+}
+
+message GetProductByIdResponse {
+  Product product = 1;
+}
+
+message UpdateProductRequest {
+  Product product = 1;
+}
+
+message UpdateProductResponse {}
+
+message DeleteProductRequest {
+  int64 id = 1;
+}
+
+message DeleteProductResponse {}
+
+message GetProductDetailRequest {
+  int64 id = 1;
+}
+
+message GetProductDetailResponse {
+  Product product = 1;
+  repeated ProductSpec product_spec = 2;
+}
+
+message ProductSpec {
+  int64 id = 1;
+  string spec_name = 2;
+  string info = 3;
+  repeated SpecOption option = 4;
+}
+
+message SpecOption {
+  int64 id = 1;
+  string name = 2;
+}
+
+message ProductMap {
+  int64 id = 1;
+  int64 vendor_id = 2;
+  int64 product_id = 3;
+  int64 vendor_product_id = 4;
+  string info = 5;
+}
+
+message CreateProductMapRequest {
+  ProductMap product_map = 1;
+}
+
+message CreateProductMapResponse {}
+
+message GetProductMapsRequest {}
+
+message GetProductMapsResponse {
+  repeated ProductMap product_map = 1;
+}
+
+message GetProductMapByIdRequest {
+  int64 id = 1;
+}
+
+message GetProductMapByIdResponse {
+  ProductMap product_map = 1;
+}
+
+message UpdateProductMapRequest {
+  ProductMap product_map = 1;
+}
+
+message UpdateProductMapResponse {}
+
+message DeleteProductMapRequest {
+  int64 id = 1;
+}
+
+message DeleteProductMapResponse {}

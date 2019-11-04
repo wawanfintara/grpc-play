@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+option go_package = "localservices";
+
+message Category {
+  int64 id = 1;
+  string name = 2;
+  int64 parent_id = 3;
+}
+
+message CategoryMap {
+  int64 id = 1;
+  int64 category_id = 2;
+  int64 vendor_category_id = 3;
+  int64 vendor_id = 4;
+}
+
+message GetCategoriesRequest {}
+
+message Categories {
+  repeated Category category = 1;
+}
+
+message CreateCategoryMapRequest {
+  CategoryMap cat_map = 1;
+}
+
+message CreateCategoryMapResponse {}
+
+message GetCategoryMapsRequest {}
+
+message GetCategoryMapsResponse {
+  repeated CategoryMap cat_map = 1;
+}
+
+message GetCategoryMapByIdRequest {
+  int64 id = 1;
+}
+
+message GetCategoryMapByIdResponse {
+  CategoryMap cat_map = 1;
+}
+
+message UpdateCategoryMapRequest {
+  CategoryMap cat_map = 1;
+}
+
+message UpdateCategoryMapResponse {}
+
+message DeleteCategoryMapRequest {
+  int64 id = 1;
+}
+
+message DeleteCategoryMapResponse {}

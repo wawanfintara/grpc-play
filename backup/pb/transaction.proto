@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option go_package = "localservices";
+
+import "google/protobuf/timestamp.proto";
+
+message TxFulfillment {
+	int64 id = 1;
+	int64 aggregator_id = 2;
+	int64 tx_aggregator_id = 3;
+	int64 tx_det_status = 4;
+	google.protobuf.Timestamp created_time = 5;
+	google.protobuf.Timestamp updated_time = 6;
+}
+
+message CreateTxFulfillmentRequest {
+	TxFulfillment tx_fulfillment = 1;
+}
+
+message CreateTxFulfillmentResponse {}
+
+message GetTxFulfillmentsRequest {}
+
+message GetTxFulfillmentsResponse {
+	repeated TxFulfillment tx_fulfillment = 1;
+}
+
+message GetTxFulfillmentByIdRequest {
+	int64 id = 1;
+}
+
+message GetTxFulfillmentByIdResponse {
+	TxFulfillment tx_fulfillment = 1;
+}
+
+message UpdateTxFulfillmentRequest {
+	TxFulfillment tx_fulfillment = 1;
+}
+
+message UpdateTxFulfillmentResponse {}

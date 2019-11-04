@@ -18,384 +18,1377 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
-type VendorSubprovinceCoverage struct {
+type AreaProvinceMapping struct {
 	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	AllSubprovinceId     int64    `protobuf:"varint,2,opt,name=all_subprovince_id,json=allSubprovinceId,proto3" json:"all_subprovince_id,omitempty"`
-	VendorId             int64    `protobuf:"varint,3,opt,name=vendor_id,json=vendorId,proto3" json:"vendor_id,omitempty"`
+	VendorId             int64    `protobuf:"varint,2,opt,name=vendor_id,json=vendorId,proto3" json:"vendor_id,omitempty"`
+	VendorProvinceId     int64    `protobuf:"varint,3,opt,name=vendor_province_id,json=vendorProvinceId,proto3" json:"vendor_province_id,omitempty"`
+	VendorProvinceCode   string   `protobuf:"bytes,4,opt,name=vendor_province_code,json=vendorProvinceCode,proto3" json:"vendor_province_code,omitempty"`
+	Name                 string   `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
+	TokopediaProvinceId  int64    `protobuf:"varint,6,opt,name=tokopedia_province_id,json=tokopediaProvinceId,proto3" json:"tokopedia_province_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *VendorSubprovinceCoverage) Reset()         { *m = VendorSubprovinceCoverage{} }
-func (m *VendorSubprovinceCoverage) String() string { return proto.CompactTextString(m) }
-func (*VendorSubprovinceCoverage) ProtoMessage()    {}
-func (*VendorSubprovinceCoverage) Descriptor() ([]byte, []int) {
-	return fileDescriptor_area_coverage_2565e926e7efc8cf, []int{0}
+func (m *AreaProvinceMapping) Reset()         { *m = AreaProvinceMapping{} }
+func (m *AreaProvinceMapping) String() string { return proto.CompactTextString(m) }
+func (*AreaProvinceMapping) ProtoMessage()    {}
+func (*AreaProvinceMapping) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{0}
 }
-func (m *VendorSubprovinceCoverage) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_VendorSubprovinceCoverage.Unmarshal(m, b)
+func (m *AreaProvinceMapping) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AreaProvinceMapping.Unmarshal(m, b)
 }
-func (m *VendorSubprovinceCoverage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_VendorSubprovinceCoverage.Marshal(b, m, deterministic)
+func (m *AreaProvinceMapping) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AreaProvinceMapping.Marshal(b, m, deterministic)
 }
-func (dst *VendorSubprovinceCoverage) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_VendorSubprovinceCoverage.Merge(dst, src)
+func (dst *AreaProvinceMapping) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AreaProvinceMapping.Merge(dst, src)
 }
-func (m *VendorSubprovinceCoverage) XXX_Size() int {
-	return xxx_messageInfo_VendorSubprovinceCoverage.Size(m)
+func (m *AreaProvinceMapping) XXX_Size() int {
+	return xxx_messageInfo_AreaProvinceMapping.Size(m)
 }
-func (m *VendorSubprovinceCoverage) XXX_DiscardUnknown() {
-	xxx_messageInfo_VendorSubprovinceCoverage.DiscardUnknown(m)
+func (m *AreaProvinceMapping) XXX_DiscardUnknown() {
+	xxx_messageInfo_AreaProvinceMapping.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_VendorSubprovinceCoverage proto.InternalMessageInfo
+var xxx_messageInfo_AreaProvinceMapping proto.InternalMessageInfo
 
-func (m *VendorSubprovinceCoverage) GetId() int64 {
+func (m *AreaProvinceMapping) GetId() int64 {
 	if m != nil {
 		return m.Id
 	}
 	return 0
 }
 
-func (m *VendorSubprovinceCoverage) GetAllSubprovinceId() int64 {
-	if m != nil {
-		return m.AllSubprovinceId
-	}
-	return 0
-}
-
-func (m *VendorSubprovinceCoverage) GetVendorId() int64 {
+func (m *AreaProvinceMapping) GetVendorId() int64 {
 	if m != nil {
 		return m.VendorId
 	}
 	return 0
 }
 
-type CreateVendorSubprovinceCoverageRequest struct {
-	VendorSubprovinceCoverage *VendorSubprovinceCoverage `protobuf:"bytes,1,opt,name=vendor_subprovince_coverage,json=vendorSubprovinceCoverage,proto3" json:"vendor_subprovince_coverage,omitempty"`
-	XXX_NoUnkeyedLiteral      struct{}                   `json:"-"`
-	XXX_unrecognized          []byte                     `json:"-"`
-	XXX_sizecache             int32                      `json:"-"`
-}
-
-func (m *CreateVendorSubprovinceCoverageRequest) Reset() {
-	*m = CreateVendorSubprovinceCoverageRequest{}
-}
-func (m *CreateVendorSubprovinceCoverageRequest) String() string { return proto.CompactTextString(m) }
-func (*CreateVendorSubprovinceCoverageRequest) ProtoMessage()    {}
-func (*CreateVendorSubprovinceCoverageRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_area_coverage_2565e926e7efc8cf, []int{1}
-}
-func (m *CreateVendorSubprovinceCoverageRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CreateVendorSubprovinceCoverageRequest.Unmarshal(m, b)
-}
-func (m *CreateVendorSubprovinceCoverageRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CreateVendorSubprovinceCoverageRequest.Marshal(b, m, deterministic)
-}
-func (dst *CreateVendorSubprovinceCoverageRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CreateVendorSubprovinceCoverageRequest.Merge(dst, src)
-}
-func (m *CreateVendorSubprovinceCoverageRequest) XXX_Size() int {
-	return xxx_messageInfo_CreateVendorSubprovinceCoverageRequest.Size(m)
-}
-func (m *CreateVendorSubprovinceCoverageRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_CreateVendorSubprovinceCoverageRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CreateVendorSubprovinceCoverageRequest proto.InternalMessageInfo
-
-func (m *CreateVendorSubprovinceCoverageRequest) GetVendorSubprovinceCoverage() *VendorSubprovinceCoverage {
+func (m *AreaProvinceMapping) GetVendorProvinceId() int64 {
 	if m != nil {
-		return m.VendorSubprovinceCoverage
+		return m.VendorProvinceId
+	}
+	return 0
+}
+
+func (m *AreaProvinceMapping) GetVendorProvinceCode() string {
+	if m != nil {
+		return m.VendorProvinceCode
+	}
+	return ""
+}
+
+func (m *AreaProvinceMapping) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *AreaProvinceMapping) GetTokopediaProvinceId() int64 {
+	if m != nil {
+		return m.TokopediaProvinceId
+	}
+	return 0
+}
+
+type CreateAreaProvinceMappingRequest struct {
+	ProvinceMapping      *AreaProvinceMapping `protobuf:"bytes,1,opt,name=province_mapping,json=provinceMapping,proto3" json:"province_mapping,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *CreateAreaProvinceMappingRequest) Reset()         { *m = CreateAreaProvinceMappingRequest{} }
+func (m *CreateAreaProvinceMappingRequest) String() string { return proto.CompactTextString(m) }
+func (*CreateAreaProvinceMappingRequest) ProtoMessage()    {}
+func (*CreateAreaProvinceMappingRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{1}
+}
+func (m *CreateAreaProvinceMappingRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreateAreaProvinceMappingRequest.Unmarshal(m, b)
+}
+func (m *CreateAreaProvinceMappingRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateAreaProvinceMappingRequest.Marshal(b, m, deterministic)
+}
+func (dst *CreateAreaProvinceMappingRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateAreaProvinceMappingRequest.Merge(dst, src)
+}
+func (m *CreateAreaProvinceMappingRequest) XXX_Size() int {
+	return xxx_messageInfo_CreateAreaProvinceMappingRequest.Size(m)
+}
+func (m *CreateAreaProvinceMappingRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateAreaProvinceMappingRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CreateAreaProvinceMappingRequest proto.InternalMessageInfo
+
+func (m *CreateAreaProvinceMappingRequest) GetProvinceMapping() *AreaProvinceMapping {
+	if m != nil {
+		return m.ProvinceMapping
 	}
 	return nil
 }
 
-type CreateVendorSubprovinceCoverageResponse struct {
+type CreateAreaProvinceMappingResponse struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *CreateVendorSubprovinceCoverageResponse) Reset() {
-	*m = CreateVendorSubprovinceCoverageResponse{}
+func (m *CreateAreaProvinceMappingResponse) Reset()         { *m = CreateAreaProvinceMappingResponse{} }
+func (m *CreateAreaProvinceMappingResponse) String() string { return proto.CompactTextString(m) }
+func (*CreateAreaProvinceMappingResponse) ProtoMessage()    {}
+func (*CreateAreaProvinceMappingResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{2}
 }
-func (m *CreateVendorSubprovinceCoverageResponse) String() string { return proto.CompactTextString(m) }
-func (*CreateVendorSubprovinceCoverageResponse) ProtoMessage()    {}
-func (*CreateVendorSubprovinceCoverageResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_area_coverage_2565e926e7efc8cf, []int{2}
+func (m *CreateAreaProvinceMappingResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreateAreaProvinceMappingResponse.Unmarshal(m, b)
 }
-func (m *CreateVendorSubprovinceCoverageResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CreateVendorSubprovinceCoverageResponse.Unmarshal(m, b)
+func (m *CreateAreaProvinceMappingResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateAreaProvinceMappingResponse.Marshal(b, m, deterministic)
 }
-func (m *CreateVendorSubprovinceCoverageResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CreateVendorSubprovinceCoverageResponse.Marshal(b, m, deterministic)
+func (dst *CreateAreaProvinceMappingResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateAreaProvinceMappingResponse.Merge(dst, src)
 }
-func (dst *CreateVendorSubprovinceCoverageResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CreateVendorSubprovinceCoverageResponse.Merge(dst, src)
+func (m *CreateAreaProvinceMappingResponse) XXX_Size() int {
+	return xxx_messageInfo_CreateAreaProvinceMappingResponse.Size(m)
 }
-func (m *CreateVendorSubprovinceCoverageResponse) XXX_Size() int {
-	return xxx_messageInfo_CreateVendorSubprovinceCoverageResponse.Size(m)
-}
-func (m *CreateVendorSubprovinceCoverageResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_CreateVendorSubprovinceCoverageResponse.DiscardUnknown(m)
+func (m *CreateAreaProvinceMappingResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateAreaProvinceMappingResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CreateVendorSubprovinceCoverageResponse proto.InternalMessageInfo
+var xxx_messageInfo_CreateAreaProvinceMappingResponse proto.InternalMessageInfo
 
-type GetVendorSubprovinceCoveragesRequest struct {
+type GetAreaProvinceMappingsRequest struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetVendorSubprovinceCoveragesRequest) Reset()         { *m = GetVendorSubprovinceCoveragesRequest{} }
-func (m *GetVendorSubprovinceCoveragesRequest) String() string { return proto.CompactTextString(m) }
-func (*GetVendorSubprovinceCoveragesRequest) ProtoMessage()    {}
-func (*GetVendorSubprovinceCoveragesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_area_coverage_2565e926e7efc8cf, []int{3}
+func (m *GetAreaProvinceMappingsRequest) Reset()         { *m = GetAreaProvinceMappingsRequest{} }
+func (m *GetAreaProvinceMappingsRequest) String() string { return proto.CompactTextString(m) }
+func (*GetAreaProvinceMappingsRequest) ProtoMessage()    {}
+func (*GetAreaProvinceMappingsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{3}
 }
-func (m *GetVendorSubprovinceCoveragesRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetVendorSubprovinceCoveragesRequest.Unmarshal(m, b)
+func (m *GetAreaProvinceMappingsRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetAreaProvinceMappingsRequest.Unmarshal(m, b)
 }
-func (m *GetVendorSubprovinceCoveragesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetVendorSubprovinceCoveragesRequest.Marshal(b, m, deterministic)
+func (m *GetAreaProvinceMappingsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetAreaProvinceMappingsRequest.Marshal(b, m, deterministic)
 }
-func (dst *GetVendorSubprovinceCoveragesRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetVendorSubprovinceCoveragesRequest.Merge(dst, src)
+func (dst *GetAreaProvinceMappingsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetAreaProvinceMappingsRequest.Merge(dst, src)
 }
-func (m *GetVendorSubprovinceCoveragesRequest) XXX_Size() int {
-	return xxx_messageInfo_GetVendorSubprovinceCoveragesRequest.Size(m)
+func (m *GetAreaProvinceMappingsRequest) XXX_Size() int {
+	return xxx_messageInfo_GetAreaProvinceMappingsRequest.Size(m)
 }
-func (m *GetVendorSubprovinceCoveragesRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetVendorSubprovinceCoveragesRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GetVendorSubprovinceCoveragesRequest proto.InternalMessageInfo
-
-type GetVendorSubprovinceCoveragesResponse struct {
-	VendorSubprovinceCoverage []*VendorSubprovinceCoverage `protobuf:"bytes,1,rep,name=vendor_subprovince_coverage,json=vendorSubprovinceCoverage,proto3" json:"vendor_subprovince_coverage,omitempty"`
-	XXX_NoUnkeyedLiteral      struct{}                     `json:"-"`
-	XXX_unrecognized          []byte                       `json:"-"`
-	XXX_sizecache             int32                        `json:"-"`
+func (m *GetAreaProvinceMappingsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetAreaProvinceMappingsRequest.DiscardUnknown(m)
 }
 
-func (m *GetVendorSubprovinceCoveragesResponse) Reset()         { *m = GetVendorSubprovinceCoveragesResponse{} }
-func (m *GetVendorSubprovinceCoveragesResponse) String() string { return proto.CompactTextString(m) }
-func (*GetVendorSubprovinceCoveragesResponse) ProtoMessage()    {}
-func (*GetVendorSubprovinceCoveragesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_area_coverage_2565e926e7efc8cf, []int{4}
-}
-func (m *GetVendorSubprovinceCoveragesResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetVendorSubprovinceCoveragesResponse.Unmarshal(m, b)
-}
-func (m *GetVendorSubprovinceCoveragesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetVendorSubprovinceCoveragesResponse.Marshal(b, m, deterministic)
-}
-func (dst *GetVendorSubprovinceCoveragesResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetVendorSubprovinceCoveragesResponse.Merge(dst, src)
-}
-func (m *GetVendorSubprovinceCoveragesResponse) XXX_Size() int {
-	return xxx_messageInfo_GetVendorSubprovinceCoveragesResponse.Size(m)
-}
-func (m *GetVendorSubprovinceCoveragesResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetVendorSubprovinceCoveragesResponse.DiscardUnknown(m)
+var xxx_messageInfo_GetAreaProvinceMappingsRequest proto.InternalMessageInfo
+
+type GetAreaProvinceMappingsResponse struct {
+	ProvinceMapping      []*AreaProvinceMapping `protobuf:"bytes,1,rep,name=province_mapping,json=provinceMapping,proto3" json:"province_mapping,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
-var xxx_messageInfo_GetVendorSubprovinceCoveragesResponse proto.InternalMessageInfo
+func (m *GetAreaProvinceMappingsResponse) Reset()         { *m = GetAreaProvinceMappingsResponse{} }
+func (m *GetAreaProvinceMappingsResponse) String() string { return proto.CompactTextString(m) }
+func (*GetAreaProvinceMappingsResponse) ProtoMessage()    {}
+func (*GetAreaProvinceMappingsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{4}
+}
+func (m *GetAreaProvinceMappingsResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetAreaProvinceMappingsResponse.Unmarshal(m, b)
+}
+func (m *GetAreaProvinceMappingsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetAreaProvinceMappingsResponse.Marshal(b, m, deterministic)
+}
+func (dst *GetAreaProvinceMappingsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetAreaProvinceMappingsResponse.Merge(dst, src)
+}
+func (m *GetAreaProvinceMappingsResponse) XXX_Size() int {
+	return xxx_messageInfo_GetAreaProvinceMappingsResponse.Size(m)
+}
+func (m *GetAreaProvinceMappingsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetAreaProvinceMappingsResponse.DiscardUnknown(m)
+}
 
-func (m *GetVendorSubprovinceCoveragesResponse) GetVendorSubprovinceCoverage() []*VendorSubprovinceCoverage {
+var xxx_messageInfo_GetAreaProvinceMappingsResponse proto.InternalMessageInfo
+
+func (m *GetAreaProvinceMappingsResponse) GetProvinceMapping() []*AreaProvinceMapping {
 	if m != nil {
-		return m.VendorSubprovinceCoverage
+		return m.ProvinceMapping
 	}
 	return nil
 }
 
-type GetVendorSubprovinceCoverageByIdRequest struct {
+type GetAreaProvinceMappingByIdRequest struct {
 	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetVendorSubprovinceCoverageByIdRequest) Reset() {
-	*m = GetVendorSubprovinceCoverageByIdRequest{}
+func (m *GetAreaProvinceMappingByIdRequest) Reset()         { *m = GetAreaProvinceMappingByIdRequest{} }
+func (m *GetAreaProvinceMappingByIdRequest) String() string { return proto.CompactTextString(m) }
+func (*GetAreaProvinceMappingByIdRequest) ProtoMessage()    {}
+func (*GetAreaProvinceMappingByIdRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{5}
 }
-func (m *GetVendorSubprovinceCoverageByIdRequest) String() string { return proto.CompactTextString(m) }
-func (*GetVendorSubprovinceCoverageByIdRequest) ProtoMessage()    {}
-func (*GetVendorSubprovinceCoverageByIdRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_area_coverage_2565e926e7efc8cf, []int{5}
+func (m *GetAreaProvinceMappingByIdRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetAreaProvinceMappingByIdRequest.Unmarshal(m, b)
 }
-func (m *GetVendorSubprovinceCoverageByIdRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetVendorSubprovinceCoverageByIdRequest.Unmarshal(m, b)
+func (m *GetAreaProvinceMappingByIdRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetAreaProvinceMappingByIdRequest.Marshal(b, m, deterministic)
 }
-func (m *GetVendorSubprovinceCoverageByIdRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetVendorSubprovinceCoverageByIdRequest.Marshal(b, m, deterministic)
+func (dst *GetAreaProvinceMappingByIdRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetAreaProvinceMappingByIdRequest.Merge(dst, src)
 }
-func (dst *GetVendorSubprovinceCoverageByIdRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetVendorSubprovinceCoverageByIdRequest.Merge(dst, src)
+func (m *GetAreaProvinceMappingByIdRequest) XXX_Size() int {
+	return xxx_messageInfo_GetAreaProvinceMappingByIdRequest.Size(m)
 }
-func (m *GetVendorSubprovinceCoverageByIdRequest) XXX_Size() int {
-	return xxx_messageInfo_GetVendorSubprovinceCoverageByIdRequest.Size(m)
-}
-func (m *GetVendorSubprovinceCoverageByIdRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetVendorSubprovinceCoverageByIdRequest.DiscardUnknown(m)
+func (m *GetAreaProvinceMappingByIdRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetAreaProvinceMappingByIdRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetVendorSubprovinceCoverageByIdRequest proto.InternalMessageInfo
+var xxx_messageInfo_GetAreaProvinceMappingByIdRequest proto.InternalMessageInfo
 
-func (m *GetVendorSubprovinceCoverageByIdRequest) GetId() int64 {
+func (m *GetAreaProvinceMappingByIdRequest) GetId() int64 {
 	if m != nil {
 		return m.Id
 	}
 	return 0
 }
 
-type GetVendorSubprovinceCoverageByIdResponse struct {
-	VendorSubprovinceCoverage *VendorSubprovinceCoverage `protobuf:"bytes,1,opt,name=vendor_subprovince_coverage,json=vendorSubprovinceCoverage,proto3" json:"vendor_subprovince_coverage,omitempty"`
-	XXX_NoUnkeyedLiteral      struct{}                   `json:"-"`
-	XXX_unrecognized          []byte                     `json:"-"`
-	XXX_sizecache             int32                      `json:"-"`
+type GetAreaProvinceMappingByIdResponse struct {
+	ProvinceMapping      *AreaProvinceMapping `protobuf:"bytes,1,opt,name=province_mapping,json=provinceMapping,proto3" json:"province_mapping,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *GetVendorSubprovinceCoverageByIdResponse) Reset() {
-	*m = GetVendorSubprovinceCoverageByIdResponse{}
+func (m *GetAreaProvinceMappingByIdResponse) Reset()         { *m = GetAreaProvinceMappingByIdResponse{} }
+func (m *GetAreaProvinceMappingByIdResponse) String() string { return proto.CompactTextString(m) }
+func (*GetAreaProvinceMappingByIdResponse) ProtoMessage()    {}
+func (*GetAreaProvinceMappingByIdResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{6}
 }
-func (m *GetVendorSubprovinceCoverageByIdResponse) String() string { return proto.CompactTextString(m) }
-func (*GetVendorSubprovinceCoverageByIdResponse) ProtoMessage()    {}
-func (*GetVendorSubprovinceCoverageByIdResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_area_coverage_2565e926e7efc8cf, []int{6}
+func (m *GetAreaProvinceMappingByIdResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetAreaProvinceMappingByIdResponse.Unmarshal(m, b)
 }
-func (m *GetVendorSubprovinceCoverageByIdResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetVendorSubprovinceCoverageByIdResponse.Unmarshal(m, b)
+func (m *GetAreaProvinceMappingByIdResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetAreaProvinceMappingByIdResponse.Marshal(b, m, deterministic)
 }
-func (m *GetVendorSubprovinceCoverageByIdResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetVendorSubprovinceCoverageByIdResponse.Marshal(b, m, deterministic)
+func (dst *GetAreaProvinceMappingByIdResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetAreaProvinceMappingByIdResponse.Merge(dst, src)
 }
-func (dst *GetVendorSubprovinceCoverageByIdResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetVendorSubprovinceCoverageByIdResponse.Merge(dst, src)
+func (m *GetAreaProvinceMappingByIdResponse) XXX_Size() int {
+	return xxx_messageInfo_GetAreaProvinceMappingByIdResponse.Size(m)
 }
-func (m *GetVendorSubprovinceCoverageByIdResponse) XXX_Size() int {
-	return xxx_messageInfo_GetVendorSubprovinceCoverageByIdResponse.Size(m)
-}
-func (m *GetVendorSubprovinceCoverageByIdResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetVendorSubprovinceCoverageByIdResponse.DiscardUnknown(m)
+func (m *GetAreaProvinceMappingByIdResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetAreaProvinceMappingByIdResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetVendorSubprovinceCoverageByIdResponse proto.InternalMessageInfo
+var xxx_messageInfo_GetAreaProvinceMappingByIdResponse proto.InternalMessageInfo
 
-func (m *GetVendorSubprovinceCoverageByIdResponse) GetVendorSubprovinceCoverage() *VendorSubprovinceCoverage {
+func (m *GetAreaProvinceMappingByIdResponse) GetProvinceMapping() *AreaProvinceMapping {
 	if m != nil {
-		return m.VendorSubprovinceCoverage
+		return m.ProvinceMapping
 	}
 	return nil
 }
 
-type UpdateVendorSubprovinceCoverageRequest struct {
-	VendorSubprovinceCoverage *VendorSubprovinceCoverage `protobuf:"bytes,1,opt,name=vendor_subprovince_coverage,json=vendorSubprovinceCoverage,proto3" json:"vendor_subprovince_coverage,omitempty"`
-	XXX_NoUnkeyedLiteral      struct{}                   `json:"-"`
-	XXX_unrecognized          []byte                     `json:"-"`
-	XXX_sizecache             int32                      `json:"-"`
+type UpdateAreaProvinceMappingRequest struct {
+	ProvinceMapping      *AreaProvinceMapping `protobuf:"bytes,1,opt,name=province_mapping,json=provinceMapping,proto3" json:"province_mapping,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *UpdateVendorSubprovinceCoverageRequest) Reset() {
-	*m = UpdateVendorSubprovinceCoverageRequest{}
+func (m *UpdateAreaProvinceMappingRequest) Reset()         { *m = UpdateAreaProvinceMappingRequest{} }
+func (m *UpdateAreaProvinceMappingRequest) String() string { return proto.CompactTextString(m) }
+func (*UpdateAreaProvinceMappingRequest) ProtoMessage()    {}
+func (*UpdateAreaProvinceMappingRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{7}
 }
-func (m *UpdateVendorSubprovinceCoverageRequest) String() string { return proto.CompactTextString(m) }
-func (*UpdateVendorSubprovinceCoverageRequest) ProtoMessage()    {}
-func (*UpdateVendorSubprovinceCoverageRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_area_coverage_2565e926e7efc8cf, []int{7}
+func (m *UpdateAreaProvinceMappingRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UpdateAreaProvinceMappingRequest.Unmarshal(m, b)
 }
-func (m *UpdateVendorSubprovinceCoverageRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UpdateVendorSubprovinceCoverageRequest.Unmarshal(m, b)
+func (m *UpdateAreaProvinceMappingRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UpdateAreaProvinceMappingRequest.Marshal(b, m, deterministic)
 }
-func (m *UpdateVendorSubprovinceCoverageRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UpdateVendorSubprovinceCoverageRequest.Marshal(b, m, deterministic)
+func (dst *UpdateAreaProvinceMappingRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdateAreaProvinceMappingRequest.Merge(dst, src)
 }
-func (dst *UpdateVendorSubprovinceCoverageRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdateVendorSubprovinceCoverageRequest.Merge(dst, src)
+func (m *UpdateAreaProvinceMappingRequest) XXX_Size() int {
+	return xxx_messageInfo_UpdateAreaProvinceMappingRequest.Size(m)
 }
-func (m *UpdateVendorSubprovinceCoverageRequest) XXX_Size() int {
-	return xxx_messageInfo_UpdateVendorSubprovinceCoverageRequest.Size(m)
-}
-func (m *UpdateVendorSubprovinceCoverageRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_UpdateVendorSubprovinceCoverageRequest.DiscardUnknown(m)
+func (m *UpdateAreaProvinceMappingRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_UpdateAreaProvinceMappingRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_UpdateVendorSubprovinceCoverageRequest proto.InternalMessageInfo
+var xxx_messageInfo_UpdateAreaProvinceMappingRequest proto.InternalMessageInfo
 
-func (m *UpdateVendorSubprovinceCoverageRequest) GetVendorSubprovinceCoverage() *VendorSubprovinceCoverage {
+func (m *UpdateAreaProvinceMappingRequest) GetProvinceMapping() *AreaProvinceMapping {
 	if m != nil {
-		return m.VendorSubprovinceCoverage
+		return m.ProvinceMapping
 	}
 	return nil
 }
 
-type UpdateVendorSubprovinceCoverageResponse struct {
+type UpdateAreaProvinceMappingResponse struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *UpdateVendorSubprovinceCoverageResponse) Reset() {
-	*m = UpdateVendorSubprovinceCoverageResponse{}
+func (m *UpdateAreaProvinceMappingResponse) Reset()         { *m = UpdateAreaProvinceMappingResponse{} }
+func (m *UpdateAreaProvinceMappingResponse) String() string { return proto.CompactTextString(m) }
+func (*UpdateAreaProvinceMappingResponse) ProtoMessage()    {}
+func (*UpdateAreaProvinceMappingResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{8}
 }
-func (m *UpdateVendorSubprovinceCoverageResponse) String() string { return proto.CompactTextString(m) }
-func (*UpdateVendorSubprovinceCoverageResponse) ProtoMessage()    {}
-func (*UpdateVendorSubprovinceCoverageResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_area_coverage_2565e926e7efc8cf, []int{8}
+func (m *UpdateAreaProvinceMappingResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UpdateAreaProvinceMappingResponse.Unmarshal(m, b)
 }
-func (m *UpdateVendorSubprovinceCoverageResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UpdateVendorSubprovinceCoverageResponse.Unmarshal(m, b)
+func (m *UpdateAreaProvinceMappingResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UpdateAreaProvinceMappingResponse.Marshal(b, m, deterministic)
 }
-func (m *UpdateVendorSubprovinceCoverageResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UpdateVendorSubprovinceCoverageResponse.Marshal(b, m, deterministic)
+func (dst *UpdateAreaProvinceMappingResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdateAreaProvinceMappingResponse.Merge(dst, src)
 }
-func (dst *UpdateVendorSubprovinceCoverageResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdateVendorSubprovinceCoverageResponse.Merge(dst, src)
+func (m *UpdateAreaProvinceMappingResponse) XXX_Size() int {
+	return xxx_messageInfo_UpdateAreaProvinceMappingResponse.Size(m)
 }
-func (m *UpdateVendorSubprovinceCoverageResponse) XXX_Size() int {
-	return xxx_messageInfo_UpdateVendorSubprovinceCoverageResponse.Size(m)
-}
-func (m *UpdateVendorSubprovinceCoverageResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_UpdateVendorSubprovinceCoverageResponse.DiscardUnknown(m)
+func (m *UpdateAreaProvinceMappingResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_UpdateAreaProvinceMappingResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_UpdateVendorSubprovinceCoverageResponse proto.InternalMessageInfo
+var xxx_messageInfo_UpdateAreaProvinceMappingResponse proto.InternalMessageInfo
+
+type DeleteAreaProvinceMappingRequest struct {
+	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DeleteAreaProvinceMappingRequest) Reset()         { *m = DeleteAreaProvinceMappingRequest{} }
+func (m *DeleteAreaProvinceMappingRequest) String() string { return proto.CompactTextString(m) }
+func (*DeleteAreaProvinceMappingRequest) ProtoMessage()    {}
+func (*DeleteAreaProvinceMappingRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{9}
+}
+func (m *DeleteAreaProvinceMappingRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeleteAreaProvinceMappingRequest.Unmarshal(m, b)
+}
+func (m *DeleteAreaProvinceMappingRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeleteAreaProvinceMappingRequest.Marshal(b, m, deterministic)
+}
+func (dst *DeleteAreaProvinceMappingRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteAreaProvinceMappingRequest.Merge(dst, src)
+}
+func (m *DeleteAreaProvinceMappingRequest) XXX_Size() int {
+	return xxx_messageInfo_DeleteAreaProvinceMappingRequest.Size(m)
+}
+func (m *DeleteAreaProvinceMappingRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteAreaProvinceMappingRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeleteAreaProvinceMappingRequest proto.InternalMessageInfo
+
+func (m *DeleteAreaProvinceMappingRequest) GetId() int64 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+type DeleteAreaProvinceMappingResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DeleteAreaProvinceMappingResponse) Reset()         { *m = DeleteAreaProvinceMappingResponse{} }
+func (m *DeleteAreaProvinceMappingResponse) String() string { return proto.CompactTextString(m) }
+func (*DeleteAreaProvinceMappingResponse) ProtoMessage()    {}
+func (*DeleteAreaProvinceMappingResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{10}
+}
+func (m *DeleteAreaProvinceMappingResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeleteAreaProvinceMappingResponse.Unmarshal(m, b)
+}
+func (m *DeleteAreaProvinceMappingResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeleteAreaProvinceMappingResponse.Marshal(b, m, deterministic)
+}
+func (dst *DeleteAreaProvinceMappingResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteAreaProvinceMappingResponse.Merge(dst, src)
+}
+func (m *DeleteAreaProvinceMappingResponse) XXX_Size() int {
+	return xxx_messageInfo_DeleteAreaProvinceMappingResponse.Size(m)
+}
+func (m *DeleteAreaProvinceMappingResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteAreaProvinceMappingResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeleteAreaProvinceMappingResponse proto.InternalMessageInfo
+
+type AreaCityMapping struct {
+	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	VendorId             int64    `protobuf:"varint,2,opt,name=vendor_id,json=vendorId,proto3" json:"vendor_id,omitempty"`
+	VendorProvinceId     int64    `protobuf:"varint,3,opt,name=vendor_province_id,json=vendorProvinceId,proto3" json:"vendor_province_id,omitempty"`
+	VendorCityId         int64    `protobuf:"varint,4,opt,name=vendor_city_id,json=vendorCityId,proto3" json:"vendor_city_id,omitempty"`
+	VendorCityCode       string   `protobuf:"bytes,5,opt,name=vendor_city_code,json=vendorCityCode,proto3" json:"vendor_city_code,omitempty"`
+	Name                 string   `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
+	TokopediaCityId      int64    `protobuf:"varint,7,opt,name=tokopedia_city_id,json=tokopediaCityId,proto3" json:"tokopedia_city_id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *AreaCityMapping) Reset()         { *m = AreaCityMapping{} }
+func (m *AreaCityMapping) String() string { return proto.CompactTextString(m) }
+func (*AreaCityMapping) ProtoMessage()    {}
+func (*AreaCityMapping) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{11}
+}
+func (m *AreaCityMapping) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AreaCityMapping.Unmarshal(m, b)
+}
+func (m *AreaCityMapping) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AreaCityMapping.Marshal(b, m, deterministic)
+}
+func (dst *AreaCityMapping) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AreaCityMapping.Merge(dst, src)
+}
+func (m *AreaCityMapping) XXX_Size() int {
+	return xxx_messageInfo_AreaCityMapping.Size(m)
+}
+func (m *AreaCityMapping) XXX_DiscardUnknown() {
+	xxx_messageInfo_AreaCityMapping.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AreaCityMapping proto.InternalMessageInfo
+
+func (m *AreaCityMapping) GetId() int64 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+func (m *AreaCityMapping) GetVendorId() int64 {
+	if m != nil {
+		return m.VendorId
+	}
+	return 0
+}
+
+func (m *AreaCityMapping) GetVendorProvinceId() int64 {
+	if m != nil {
+		return m.VendorProvinceId
+	}
+	return 0
+}
+
+func (m *AreaCityMapping) GetVendorCityId() int64 {
+	if m != nil {
+		return m.VendorCityId
+	}
+	return 0
+}
+
+func (m *AreaCityMapping) GetVendorCityCode() string {
+	if m != nil {
+		return m.VendorCityCode
+	}
+	return ""
+}
+
+func (m *AreaCityMapping) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *AreaCityMapping) GetTokopediaCityId() int64 {
+	if m != nil {
+		return m.TokopediaCityId
+	}
+	return 0
+}
+
+type CreateAreaCityMappingRequest struct {
+	CityMapping          *AreaCityMapping `protobuf:"bytes,1,opt,name=city_mapping,json=cityMapping,proto3" json:"city_mapping,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
+}
+
+func (m *CreateAreaCityMappingRequest) Reset()         { *m = CreateAreaCityMappingRequest{} }
+func (m *CreateAreaCityMappingRequest) String() string { return proto.CompactTextString(m) }
+func (*CreateAreaCityMappingRequest) ProtoMessage()    {}
+func (*CreateAreaCityMappingRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{12}
+}
+func (m *CreateAreaCityMappingRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreateAreaCityMappingRequest.Unmarshal(m, b)
+}
+func (m *CreateAreaCityMappingRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateAreaCityMappingRequest.Marshal(b, m, deterministic)
+}
+func (dst *CreateAreaCityMappingRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateAreaCityMappingRequest.Merge(dst, src)
+}
+func (m *CreateAreaCityMappingRequest) XXX_Size() int {
+	return xxx_messageInfo_CreateAreaCityMappingRequest.Size(m)
+}
+func (m *CreateAreaCityMappingRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateAreaCityMappingRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CreateAreaCityMappingRequest proto.InternalMessageInfo
+
+func (m *CreateAreaCityMappingRequest) GetCityMapping() *AreaCityMapping {
+	if m != nil {
+		return m.CityMapping
+	}
+	return nil
+}
+
+type CreateAreaCityMappingResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CreateAreaCityMappingResponse) Reset()         { *m = CreateAreaCityMappingResponse{} }
+func (m *CreateAreaCityMappingResponse) String() string { return proto.CompactTextString(m) }
+func (*CreateAreaCityMappingResponse) ProtoMessage()    {}
+func (*CreateAreaCityMappingResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{13}
+}
+func (m *CreateAreaCityMappingResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreateAreaCityMappingResponse.Unmarshal(m, b)
+}
+func (m *CreateAreaCityMappingResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateAreaCityMappingResponse.Marshal(b, m, deterministic)
+}
+func (dst *CreateAreaCityMappingResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateAreaCityMappingResponse.Merge(dst, src)
+}
+func (m *CreateAreaCityMappingResponse) XXX_Size() int {
+	return xxx_messageInfo_CreateAreaCityMappingResponse.Size(m)
+}
+func (m *CreateAreaCityMappingResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateAreaCityMappingResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CreateAreaCityMappingResponse proto.InternalMessageInfo
+
+type GetAreaCityMappingsRequest struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetAreaCityMappingsRequest) Reset()         { *m = GetAreaCityMappingsRequest{} }
+func (m *GetAreaCityMappingsRequest) String() string { return proto.CompactTextString(m) }
+func (*GetAreaCityMappingsRequest) ProtoMessage()    {}
+func (*GetAreaCityMappingsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{14}
+}
+func (m *GetAreaCityMappingsRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetAreaCityMappingsRequest.Unmarshal(m, b)
+}
+func (m *GetAreaCityMappingsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetAreaCityMappingsRequest.Marshal(b, m, deterministic)
+}
+func (dst *GetAreaCityMappingsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetAreaCityMappingsRequest.Merge(dst, src)
+}
+func (m *GetAreaCityMappingsRequest) XXX_Size() int {
+	return xxx_messageInfo_GetAreaCityMappingsRequest.Size(m)
+}
+func (m *GetAreaCityMappingsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetAreaCityMappingsRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetAreaCityMappingsRequest proto.InternalMessageInfo
+
+type GetAreaCityMappingsResponse struct {
+	CityMapping          []*AreaCityMapping `protobuf:"bytes,1,rep,name=city_mapping,json=cityMapping,proto3" json:"city_mapping,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
+	XXX_unrecognized     []byte             `json:"-"`
+	XXX_sizecache        int32              `json:"-"`
+}
+
+func (m *GetAreaCityMappingsResponse) Reset()         { *m = GetAreaCityMappingsResponse{} }
+func (m *GetAreaCityMappingsResponse) String() string { return proto.CompactTextString(m) }
+func (*GetAreaCityMappingsResponse) ProtoMessage()    {}
+func (*GetAreaCityMappingsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{15}
+}
+func (m *GetAreaCityMappingsResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetAreaCityMappingsResponse.Unmarshal(m, b)
+}
+func (m *GetAreaCityMappingsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetAreaCityMappingsResponse.Marshal(b, m, deterministic)
+}
+func (dst *GetAreaCityMappingsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetAreaCityMappingsResponse.Merge(dst, src)
+}
+func (m *GetAreaCityMappingsResponse) XXX_Size() int {
+	return xxx_messageInfo_GetAreaCityMappingsResponse.Size(m)
+}
+func (m *GetAreaCityMappingsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetAreaCityMappingsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetAreaCityMappingsResponse proto.InternalMessageInfo
+
+func (m *GetAreaCityMappingsResponse) GetCityMapping() []*AreaCityMapping {
+	if m != nil {
+		return m.CityMapping
+	}
+	return nil
+}
+
+type GetAreaCityMappingByIdRequest struct {
+	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetAreaCityMappingByIdRequest) Reset()         { *m = GetAreaCityMappingByIdRequest{} }
+func (m *GetAreaCityMappingByIdRequest) String() string { return proto.CompactTextString(m) }
+func (*GetAreaCityMappingByIdRequest) ProtoMessage()    {}
+func (*GetAreaCityMappingByIdRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{16}
+}
+func (m *GetAreaCityMappingByIdRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetAreaCityMappingByIdRequest.Unmarshal(m, b)
+}
+func (m *GetAreaCityMappingByIdRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetAreaCityMappingByIdRequest.Marshal(b, m, deterministic)
+}
+func (dst *GetAreaCityMappingByIdRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetAreaCityMappingByIdRequest.Merge(dst, src)
+}
+func (m *GetAreaCityMappingByIdRequest) XXX_Size() int {
+	return xxx_messageInfo_GetAreaCityMappingByIdRequest.Size(m)
+}
+func (m *GetAreaCityMappingByIdRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetAreaCityMappingByIdRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetAreaCityMappingByIdRequest proto.InternalMessageInfo
+
+func (m *GetAreaCityMappingByIdRequest) GetId() int64 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+type GetAreaCityMappingByIdResponse struct {
+	CityMapping          *AreaCityMapping `protobuf:"bytes,1,opt,name=city_mapping,json=cityMapping,proto3" json:"city_mapping,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
+}
+
+func (m *GetAreaCityMappingByIdResponse) Reset()         { *m = GetAreaCityMappingByIdResponse{} }
+func (m *GetAreaCityMappingByIdResponse) String() string { return proto.CompactTextString(m) }
+func (*GetAreaCityMappingByIdResponse) ProtoMessage()    {}
+func (*GetAreaCityMappingByIdResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{17}
+}
+func (m *GetAreaCityMappingByIdResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetAreaCityMappingByIdResponse.Unmarshal(m, b)
+}
+func (m *GetAreaCityMappingByIdResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetAreaCityMappingByIdResponse.Marshal(b, m, deterministic)
+}
+func (dst *GetAreaCityMappingByIdResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetAreaCityMappingByIdResponse.Merge(dst, src)
+}
+func (m *GetAreaCityMappingByIdResponse) XXX_Size() int {
+	return xxx_messageInfo_GetAreaCityMappingByIdResponse.Size(m)
+}
+func (m *GetAreaCityMappingByIdResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetAreaCityMappingByIdResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetAreaCityMappingByIdResponse proto.InternalMessageInfo
+
+func (m *GetAreaCityMappingByIdResponse) GetCityMapping() *AreaCityMapping {
+	if m != nil {
+		return m.CityMapping
+	}
+	return nil
+}
+
+type UpdateAreaCityMappingRequest struct {
+	CityMapping          *AreaCityMapping `protobuf:"bytes,1,opt,name=city_mapping,json=cityMapping,proto3" json:"city_mapping,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
+}
+
+func (m *UpdateAreaCityMappingRequest) Reset()         { *m = UpdateAreaCityMappingRequest{} }
+func (m *UpdateAreaCityMappingRequest) String() string { return proto.CompactTextString(m) }
+func (*UpdateAreaCityMappingRequest) ProtoMessage()    {}
+func (*UpdateAreaCityMappingRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{18}
+}
+func (m *UpdateAreaCityMappingRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UpdateAreaCityMappingRequest.Unmarshal(m, b)
+}
+func (m *UpdateAreaCityMappingRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UpdateAreaCityMappingRequest.Marshal(b, m, deterministic)
+}
+func (dst *UpdateAreaCityMappingRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdateAreaCityMappingRequest.Merge(dst, src)
+}
+func (m *UpdateAreaCityMappingRequest) XXX_Size() int {
+	return xxx_messageInfo_UpdateAreaCityMappingRequest.Size(m)
+}
+func (m *UpdateAreaCityMappingRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_UpdateAreaCityMappingRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UpdateAreaCityMappingRequest proto.InternalMessageInfo
+
+func (m *UpdateAreaCityMappingRequest) GetCityMapping() *AreaCityMapping {
+	if m != nil {
+		return m.CityMapping
+	}
+	return nil
+}
+
+type UpdateAreaCityMappingResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *UpdateAreaCityMappingResponse) Reset()         { *m = UpdateAreaCityMappingResponse{} }
+func (m *UpdateAreaCityMappingResponse) String() string { return proto.CompactTextString(m) }
+func (*UpdateAreaCityMappingResponse) ProtoMessage()    {}
+func (*UpdateAreaCityMappingResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{19}
+}
+func (m *UpdateAreaCityMappingResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UpdateAreaCityMappingResponse.Unmarshal(m, b)
+}
+func (m *UpdateAreaCityMappingResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UpdateAreaCityMappingResponse.Marshal(b, m, deterministic)
+}
+func (dst *UpdateAreaCityMappingResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdateAreaCityMappingResponse.Merge(dst, src)
+}
+func (m *UpdateAreaCityMappingResponse) XXX_Size() int {
+	return xxx_messageInfo_UpdateAreaCityMappingResponse.Size(m)
+}
+func (m *UpdateAreaCityMappingResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_UpdateAreaCityMappingResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UpdateAreaCityMappingResponse proto.InternalMessageInfo
+
+type DeleteAreaCityMappingRequest struct {
+	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DeleteAreaCityMappingRequest) Reset()         { *m = DeleteAreaCityMappingRequest{} }
+func (m *DeleteAreaCityMappingRequest) String() string { return proto.CompactTextString(m) }
+func (*DeleteAreaCityMappingRequest) ProtoMessage()    {}
+func (*DeleteAreaCityMappingRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{20}
+}
+func (m *DeleteAreaCityMappingRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeleteAreaCityMappingRequest.Unmarshal(m, b)
+}
+func (m *DeleteAreaCityMappingRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeleteAreaCityMappingRequest.Marshal(b, m, deterministic)
+}
+func (dst *DeleteAreaCityMappingRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteAreaCityMappingRequest.Merge(dst, src)
+}
+func (m *DeleteAreaCityMappingRequest) XXX_Size() int {
+	return xxx_messageInfo_DeleteAreaCityMappingRequest.Size(m)
+}
+func (m *DeleteAreaCityMappingRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteAreaCityMappingRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeleteAreaCityMappingRequest proto.InternalMessageInfo
+
+func (m *DeleteAreaCityMappingRequest) GetId() int64 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+type DeleteAreaCityMappingResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DeleteAreaCityMappingResponse) Reset()         { *m = DeleteAreaCityMappingResponse{} }
+func (m *DeleteAreaCityMappingResponse) String() string { return proto.CompactTextString(m) }
+func (*DeleteAreaCityMappingResponse) ProtoMessage()    {}
+func (*DeleteAreaCityMappingResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{21}
+}
+func (m *DeleteAreaCityMappingResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeleteAreaCityMappingResponse.Unmarshal(m, b)
+}
+func (m *DeleteAreaCityMappingResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeleteAreaCityMappingResponse.Marshal(b, m, deterministic)
+}
+func (dst *DeleteAreaCityMappingResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteAreaCityMappingResponse.Merge(dst, src)
+}
+func (m *DeleteAreaCityMappingResponse) XXX_Size() int {
+	return xxx_messageInfo_DeleteAreaCityMappingResponse.Size(m)
+}
+func (m *DeleteAreaCityMappingResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteAreaCityMappingResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeleteAreaCityMappingResponse proto.InternalMessageInfo
+
+type AreaDistrictMapping struct {
+	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	VendorId             int64    `protobuf:"varint,2,opt,name=vendor_id,json=vendorId,proto3" json:"vendor_id,omitempty"`
+	VendorCityId         int64    `protobuf:"varint,3,opt,name=vendor_city_id,json=vendorCityId,proto3" json:"vendor_city_id,omitempty"`
+	VendorDistrictId     int64    `protobuf:"varint,4,opt,name=vendor_district_id,json=vendorDistrictId,proto3" json:"vendor_district_id,omitempty"`
+	VendorDistrictCode   string   `protobuf:"bytes,5,opt,name=vendor_district_code,json=vendorDistrictCode,proto3" json:"vendor_district_code,omitempty"`
+	Name                 string   `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
+	TokopediaDistrictId  int64    `protobuf:"varint,7,opt,name=tokopedia_district_id,json=tokopediaDistrictId,proto3" json:"tokopedia_district_id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *AreaDistrictMapping) Reset()         { *m = AreaDistrictMapping{} }
+func (m *AreaDistrictMapping) String() string { return proto.CompactTextString(m) }
+func (*AreaDistrictMapping) ProtoMessage()    {}
+func (*AreaDistrictMapping) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{22}
+}
+func (m *AreaDistrictMapping) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AreaDistrictMapping.Unmarshal(m, b)
+}
+func (m *AreaDistrictMapping) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AreaDistrictMapping.Marshal(b, m, deterministic)
+}
+func (dst *AreaDistrictMapping) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AreaDistrictMapping.Merge(dst, src)
+}
+func (m *AreaDistrictMapping) XXX_Size() int {
+	return xxx_messageInfo_AreaDistrictMapping.Size(m)
+}
+func (m *AreaDistrictMapping) XXX_DiscardUnknown() {
+	xxx_messageInfo_AreaDistrictMapping.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AreaDistrictMapping proto.InternalMessageInfo
+
+func (m *AreaDistrictMapping) GetId() int64 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+func (m *AreaDistrictMapping) GetVendorId() int64 {
+	if m != nil {
+		return m.VendorId
+	}
+	return 0
+}
+
+func (m *AreaDistrictMapping) GetVendorCityId() int64 {
+	if m != nil {
+		return m.VendorCityId
+	}
+	return 0
+}
+
+func (m *AreaDistrictMapping) GetVendorDistrictId() int64 {
+	if m != nil {
+		return m.VendorDistrictId
+	}
+	return 0
+}
+
+func (m *AreaDistrictMapping) GetVendorDistrictCode() string {
+	if m != nil {
+		return m.VendorDistrictCode
+	}
+	return ""
+}
+
+func (m *AreaDistrictMapping) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *AreaDistrictMapping) GetTokopediaDistrictId() int64 {
+	if m != nil {
+		return m.TokopediaDistrictId
+	}
+	return 0
+}
+
+type CreateAreaDistrictMappingRequest struct {
+	DistrictMapping      *AreaDistrictMapping `protobuf:"bytes,1,opt,name=district_mapping,json=districtMapping,proto3" json:"district_mapping,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *CreateAreaDistrictMappingRequest) Reset()         { *m = CreateAreaDistrictMappingRequest{} }
+func (m *CreateAreaDistrictMappingRequest) String() string { return proto.CompactTextString(m) }
+func (*CreateAreaDistrictMappingRequest) ProtoMessage()    {}
+func (*CreateAreaDistrictMappingRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{23}
+}
+func (m *CreateAreaDistrictMappingRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreateAreaDistrictMappingRequest.Unmarshal(m, b)
+}
+func (m *CreateAreaDistrictMappingRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateAreaDistrictMappingRequest.Marshal(b, m, deterministic)
+}
+func (dst *CreateAreaDistrictMappingRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateAreaDistrictMappingRequest.Merge(dst, src)
+}
+func (m *CreateAreaDistrictMappingRequest) XXX_Size() int {
+	return xxx_messageInfo_CreateAreaDistrictMappingRequest.Size(m)
+}
+func (m *CreateAreaDistrictMappingRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateAreaDistrictMappingRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CreateAreaDistrictMappingRequest proto.InternalMessageInfo
+
+func (m *CreateAreaDistrictMappingRequest) GetDistrictMapping() *AreaDistrictMapping {
+	if m != nil {
+		return m.DistrictMapping
+	}
+	return nil
+}
+
+type CreateAreaDistrictMappingResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CreateAreaDistrictMappingResponse) Reset()         { *m = CreateAreaDistrictMappingResponse{} }
+func (m *CreateAreaDistrictMappingResponse) String() string { return proto.CompactTextString(m) }
+func (*CreateAreaDistrictMappingResponse) ProtoMessage()    {}
+func (*CreateAreaDistrictMappingResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{24}
+}
+func (m *CreateAreaDistrictMappingResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreateAreaDistrictMappingResponse.Unmarshal(m, b)
+}
+func (m *CreateAreaDistrictMappingResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreateAreaDistrictMappingResponse.Marshal(b, m, deterministic)
+}
+func (dst *CreateAreaDistrictMappingResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreateAreaDistrictMappingResponse.Merge(dst, src)
+}
+func (m *CreateAreaDistrictMappingResponse) XXX_Size() int {
+	return xxx_messageInfo_CreateAreaDistrictMappingResponse.Size(m)
+}
+func (m *CreateAreaDistrictMappingResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreateAreaDistrictMappingResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CreateAreaDistrictMappingResponse proto.InternalMessageInfo
+
+type GetAreaDistrictMappingsRequest struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetAreaDistrictMappingsRequest) Reset()         { *m = GetAreaDistrictMappingsRequest{} }
+func (m *GetAreaDistrictMappingsRequest) String() string { return proto.CompactTextString(m) }
+func (*GetAreaDistrictMappingsRequest) ProtoMessage()    {}
+func (*GetAreaDistrictMappingsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{25}
+}
+func (m *GetAreaDistrictMappingsRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetAreaDistrictMappingsRequest.Unmarshal(m, b)
+}
+func (m *GetAreaDistrictMappingsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetAreaDistrictMappingsRequest.Marshal(b, m, deterministic)
+}
+func (dst *GetAreaDistrictMappingsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetAreaDistrictMappingsRequest.Merge(dst, src)
+}
+func (m *GetAreaDistrictMappingsRequest) XXX_Size() int {
+	return xxx_messageInfo_GetAreaDistrictMappingsRequest.Size(m)
+}
+func (m *GetAreaDistrictMappingsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetAreaDistrictMappingsRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetAreaDistrictMappingsRequest proto.InternalMessageInfo
+
+type GetAreaDistrictMappingsResponse struct {
+	DistrictMapping      []*AreaDistrictMapping `protobuf:"bytes,1,rep,name=district_mapping,json=districtMapping,proto3" json:"district_mapping,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
+}
+
+func (m *GetAreaDistrictMappingsResponse) Reset()         { *m = GetAreaDistrictMappingsResponse{} }
+func (m *GetAreaDistrictMappingsResponse) String() string { return proto.CompactTextString(m) }
+func (*GetAreaDistrictMappingsResponse) ProtoMessage()    {}
+func (*GetAreaDistrictMappingsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{26}
+}
+func (m *GetAreaDistrictMappingsResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetAreaDistrictMappingsResponse.Unmarshal(m, b)
+}
+func (m *GetAreaDistrictMappingsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetAreaDistrictMappingsResponse.Marshal(b, m, deterministic)
+}
+func (dst *GetAreaDistrictMappingsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetAreaDistrictMappingsResponse.Merge(dst, src)
+}
+func (m *GetAreaDistrictMappingsResponse) XXX_Size() int {
+	return xxx_messageInfo_GetAreaDistrictMappingsResponse.Size(m)
+}
+func (m *GetAreaDistrictMappingsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetAreaDistrictMappingsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetAreaDistrictMappingsResponse proto.InternalMessageInfo
+
+func (m *GetAreaDistrictMappingsResponse) GetDistrictMapping() []*AreaDistrictMapping {
+	if m != nil {
+		return m.DistrictMapping
+	}
+	return nil
+}
+
+type GetAreaDistrictMappingByIdRequest struct {
+	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetAreaDistrictMappingByIdRequest) Reset()         { *m = GetAreaDistrictMappingByIdRequest{} }
+func (m *GetAreaDistrictMappingByIdRequest) String() string { return proto.CompactTextString(m) }
+func (*GetAreaDistrictMappingByIdRequest) ProtoMessage()    {}
+func (*GetAreaDistrictMappingByIdRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{27}
+}
+func (m *GetAreaDistrictMappingByIdRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetAreaDistrictMappingByIdRequest.Unmarshal(m, b)
+}
+func (m *GetAreaDistrictMappingByIdRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetAreaDistrictMappingByIdRequest.Marshal(b, m, deterministic)
+}
+func (dst *GetAreaDistrictMappingByIdRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetAreaDistrictMappingByIdRequest.Merge(dst, src)
+}
+func (m *GetAreaDistrictMappingByIdRequest) XXX_Size() int {
+	return xxx_messageInfo_GetAreaDistrictMappingByIdRequest.Size(m)
+}
+func (m *GetAreaDistrictMappingByIdRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetAreaDistrictMappingByIdRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetAreaDistrictMappingByIdRequest proto.InternalMessageInfo
+
+func (m *GetAreaDistrictMappingByIdRequest) GetId() int64 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+type GetAreaDistrictMappingByIdResponse struct {
+	DistrictMapping      *AreaDistrictMapping `protobuf:"bytes,1,opt,name=district_mapping,json=districtMapping,proto3" json:"district_mapping,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *GetAreaDistrictMappingByIdResponse) Reset()         { *m = GetAreaDistrictMappingByIdResponse{} }
+func (m *GetAreaDistrictMappingByIdResponse) String() string { return proto.CompactTextString(m) }
+func (*GetAreaDistrictMappingByIdResponse) ProtoMessage()    {}
+func (*GetAreaDistrictMappingByIdResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{28}
+}
+func (m *GetAreaDistrictMappingByIdResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetAreaDistrictMappingByIdResponse.Unmarshal(m, b)
+}
+func (m *GetAreaDistrictMappingByIdResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetAreaDistrictMappingByIdResponse.Marshal(b, m, deterministic)
+}
+func (dst *GetAreaDistrictMappingByIdResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetAreaDistrictMappingByIdResponse.Merge(dst, src)
+}
+func (m *GetAreaDistrictMappingByIdResponse) XXX_Size() int {
+	return xxx_messageInfo_GetAreaDistrictMappingByIdResponse.Size(m)
+}
+func (m *GetAreaDistrictMappingByIdResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetAreaDistrictMappingByIdResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetAreaDistrictMappingByIdResponse proto.InternalMessageInfo
+
+func (m *GetAreaDistrictMappingByIdResponse) GetDistrictMapping() *AreaDistrictMapping {
+	if m != nil {
+		return m.DistrictMapping
+	}
+	return nil
+}
+
+type UpdateAreaDistrictMappingRequest struct {
+	DistrictMapping      *AreaDistrictMapping `protobuf:"bytes,1,opt,name=district_mapping,json=districtMapping,proto3" json:"district_mapping,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *UpdateAreaDistrictMappingRequest) Reset()         { *m = UpdateAreaDistrictMappingRequest{} }
+func (m *UpdateAreaDistrictMappingRequest) String() string { return proto.CompactTextString(m) }
+func (*UpdateAreaDistrictMappingRequest) ProtoMessage()    {}
+func (*UpdateAreaDistrictMappingRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{29}
+}
+func (m *UpdateAreaDistrictMappingRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UpdateAreaDistrictMappingRequest.Unmarshal(m, b)
+}
+func (m *UpdateAreaDistrictMappingRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UpdateAreaDistrictMappingRequest.Marshal(b, m, deterministic)
+}
+func (dst *UpdateAreaDistrictMappingRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdateAreaDistrictMappingRequest.Merge(dst, src)
+}
+func (m *UpdateAreaDistrictMappingRequest) XXX_Size() int {
+	return xxx_messageInfo_UpdateAreaDistrictMappingRequest.Size(m)
+}
+func (m *UpdateAreaDistrictMappingRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_UpdateAreaDistrictMappingRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UpdateAreaDistrictMappingRequest proto.InternalMessageInfo
+
+func (m *UpdateAreaDistrictMappingRequest) GetDistrictMapping() *AreaDistrictMapping {
+	if m != nil {
+		return m.DistrictMapping
+	}
+	return nil
+}
+
+type UpdateAreaDistrictMappingResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *UpdateAreaDistrictMappingResponse) Reset()         { *m = UpdateAreaDistrictMappingResponse{} }
+func (m *UpdateAreaDistrictMappingResponse) String() string { return proto.CompactTextString(m) }
+func (*UpdateAreaDistrictMappingResponse) ProtoMessage()    {}
+func (*UpdateAreaDistrictMappingResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{30}
+}
+func (m *UpdateAreaDistrictMappingResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UpdateAreaDistrictMappingResponse.Unmarshal(m, b)
+}
+func (m *UpdateAreaDistrictMappingResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UpdateAreaDistrictMappingResponse.Marshal(b, m, deterministic)
+}
+func (dst *UpdateAreaDistrictMappingResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdateAreaDistrictMappingResponse.Merge(dst, src)
+}
+func (m *UpdateAreaDistrictMappingResponse) XXX_Size() int {
+	return xxx_messageInfo_UpdateAreaDistrictMappingResponse.Size(m)
+}
+func (m *UpdateAreaDistrictMappingResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_UpdateAreaDistrictMappingResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UpdateAreaDistrictMappingResponse proto.InternalMessageInfo
+
+type DeleteAreaDistrictMappingRequest struct {
+	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DeleteAreaDistrictMappingRequest) Reset()         { *m = DeleteAreaDistrictMappingRequest{} }
+func (m *DeleteAreaDistrictMappingRequest) String() string { return proto.CompactTextString(m) }
+func (*DeleteAreaDistrictMappingRequest) ProtoMessage()    {}
+func (*DeleteAreaDistrictMappingRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{31}
+}
+func (m *DeleteAreaDistrictMappingRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeleteAreaDistrictMappingRequest.Unmarshal(m, b)
+}
+func (m *DeleteAreaDistrictMappingRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeleteAreaDistrictMappingRequest.Marshal(b, m, deterministic)
+}
+func (dst *DeleteAreaDistrictMappingRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteAreaDistrictMappingRequest.Merge(dst, src)
+}
+func (m *DeleteAreaDistrictMappingRequest) XXX_Size() int {
+	return xxx_messageInfo_DeleteAreaDistrictMappingRequest.Size(m)
+}
+func (m *DeleteAreaDistrictMappingRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteAreaDistrictMappingRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeleteAreaDistrictMappingRequest proto.InternalMessageInfo
+
+func (m *DeleteAreaDistrictMappingRequest) GetId() int64 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+type DeleteAreaDistrictMappingResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DeleteAreaDistrictMappingResponse) Reset()         { *m = DeleteAreaDistrictMappingResponse{} }
+func (m *DeleteAreaDistrictMappingResponse) String() string { return proto.CompactTextString(m) }
+func (*DeleteAreaDistrictMappingResponse) ProtoMessage()    {}
+func (*DeleteAreaDistrictMappingResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_area_coverage_45fc85af3b0d437d, []int{32}
+}
+func (m *DeleteAreaDistrictMappingResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeleteAreaDistrictMappingResponse.Unmarshal(m, b)
+}
+func (m *DeleteAreaDistrictMappingResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeleteAreaDistrictMappingResponse.Marshal(b, m, deterministic)
+}
+func (dst *DeleteAreaDistrictMappingResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteAreaDistrictMappingResponse.Merge(dst, src)
+}
+func (m *DeleteAreaDistrictMappingResponse) XXX_Size() int {
+	return xxx_messageInfo_DeleteAreaDistrictMappingResponse.Size(m)
+}
+func (m *DeleteAreaDistrictMappingResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteAreaDistrictMappingResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeleteAreaDistrictMappingResponse proto.InternalMessageInfo
 
 func init() {
-	proto.RegisterType((*VendorSubprovinceCoverage)(nil), "VendorSubprovinceCoverage")
-	proto.RegisterType((*CreateVendorSubprovinceCoverageRequest)(nil), "CreateVendorSubprovinceCoverageRequest")
-	proto.RegisterType((*CreateVendorSubprovinceCoverageResponse)(nil), "CreateVendorSubprovinceCoverageResponse")
-	proto.RegisterType((*GetVendorSubprovinceCoveragesRequest)(nil), "GetVendorSubprovinceCoveragesRequest")
-	proto.RegisterType((*GetVendorSubprovinceCoveragesResponse)(nil), "GetVendorSubprovinceCoveragesResponse")
-	proto.RegisterType((*GetVendorSubprovinceCoverageByIdRequest)(nil), "GetVendorSubprovinceCoverageByIdRequest")
-	proto.RegisterType((*GetVendorSubprovinceCoverageByIdResponse)(nil), "GetVendorSubprovinceCoverageByIdResponse")
-	proto.RegisterType((*UpdateVendorSubprovinceCoverageRequest)(nil), "UpdateVendorSubprovinceCoverageRequest")
-	proto.RegisterType((*UpdateVendorSubprovinceCoverageResponse)(nil), "UpdateVendorSubprovinceCoverageResponse")
+	proto.RegisterType((*AreaProvinceMapping)(nil), "AreaProvinceMapping")
+	proto.RegisterType((*CreateAreaProvinceMappingRequest)(nil), "CreateAreaProvinceMappingRequest")
+	proto.RegisterType((*CreateAreaProvinceMappingResponse)(nil), "CreateAreaProvinceMappingResponse")
+	proto.RegisterType((*GetAreaProvinceMappingsRequest)(nil), "GetAreaProvinceMappingsRequest")
+	proto.RegisterType((*GetAreaProvinceMappingsResponse)(nil), "GetAreaProvinceMappingsResponse")
+	proto.RegisterType((*GetAreaProvinceMappingByIdRequest)(nil), "GetAreaProvinceMappingByIdRequest")
+	proto.RegisterType((*GetAreaProvinceMappingByIdResponse)(nil), "GetAreaProvinceMappingByIdResponse")
+	proto.RegisterType((*UpdateAreaProvinceMappingRequest)(nil), "UpdateAreaProvinceMappingRequest")
+	proto.RegisterType((*UpdateAreaProvinceMappingResponse)(nil), "UpdateAreaProvinceMappingResponse")
+	proto.RegisterType((*DeleteAreaProvinceMappingRequest)(nil), "DeleteAreaProvinceMappingRequest")
+	proto.RegisterType((*DeleteAreaProvinceMappingResponse)(nil), "DeleteAreaProvinceMappingResponse")
+	proto.RegisterType((*AreaCityMapping)(nil), "AreaCityMapping")
+	proto.RegisterType((*CreateAreaCityMappingRequest)(nil), "CreateAreaCityMappingRequest")
+	proto.RegisterType((*CreateAreaCityMappingResponse)(nil), "CreateAreaCityMappingResponse")
+	proto.RegisterType((*GetAreaCityMappingsRequest)(nil), "GetAreaCityMappingsRequest")
+	proto.RegisterType((*GetAreaCityMappingsResponse)(nil), "GetAreaCityMappingsResponse")
+	proto.RegisterType((*GetAreaCityMappingByIdRequest)(nil), "GetAreaCityMappingByIdRequest")
+	proto.RegisterType((*GetAreaCityMappingByIdResponse)(nil), "GetAreaCityMappingByIdResponse")
+	proto.RegisterType((*UpdateAreaCityMappingRequest)(nil), "UpdateAreaCityMappingRequest")
+	proto.RegisterType((*UpdateAreaCityMappingResponse)(nil), "UpdateAreaCityMappingResponse")
+	proto.RegisterType((*DeleteAreaCityMappingRequest)(nil), "DeleteAreaCityMappingRequest")
+	proto.RegisterType((*DeleteAreaCityMappingResponse)(nil), "DeleteAreaCityMappingResponse")
+	proto.RegisterType((*AreaDistrictMapping)(nil), "AreaDistrictMapping")
+	proto.RegisterType((*CreateAreaDistrictMappingRequest)(nil), "CreateAreaDistrictMappingRequest")
+	proto.RegisterType((*CreateAreaDistrictMappingResponse)(nil), "CreateAreaDistrictMappingResponse")
+	proto.RegisterType((*GetAreaDistrictMappingsRequest)(nil), "GetAreaDistrictMappingsRequest")
+	proto.RegisterType((*GetAreaDistrictMappingsResponse)(nil), "GetAreaDistrictMappingsResponse")
+	proto.RegisterType((*GetAreaDistrictMappingByIdRequest)(nil), "GetAreaDistrictMappingByIdRequest")
+	proto.RegisterType((*GetAreaDistrictMappingByIdResponse)(nil), "GetAreaDistrictMappingByIdResponse")
+	proto.RegisterType((*UpdateAreaDistrictMappingRequest)(nil), "UpdateAreaDistrictMappingRequest")
+	proto.RegisterType((*UpdateAreaDistrictMappingResponse)(nil), "UpdateAreaDistrictMappingResponse")
+	proto.RegisterType((*DeleteAreaDistrictMappingRequest)(nil), "DeleteAreaDistrictMappingRequest")
+	proto.RegisterType((*DeleteAreaDistrictMappingResponse)(nil), "DeleteAreaDistrictMappingResponse")
 }
 
-func init() { proto.RegisterFile("area_coverage.proto", fileDescriptor_area_coverage_2565e926e7efc8cf) }
+func init() { proto.RegisterFile("area_coverage.proto", fileDescriptor_area_coverage_45fc85af3b0d437d) }
 
-var fileDescriptor_area_coverage_2565e926e7efc8cf = []byte{
-	// 276 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x4e, 0x2c, 0x4a, 0x4d,
-	0x8c, 0x4f, 0xce, 0x2f, 0x4b, 0x2d, 0x4a, 0x4c, 0x4f, 0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x57,
-	0x2a, 0xe3, 0x92, 0x0c, 0x4b, 0xcd, 0x4b, 0xc9, 0x2f, 0x0a, 0x2e, 0x4d, 0x2a, 0x28, 0xca, 0x2f,
-	0xcb, 0xcc, 0x4b, 0x4e, 0x75, 0x86, 0x2a, 0x11, 0xe2, 0xe3, 0x62, 0xca, 0x4c, 0x91, 0x60, 0x54,
-	0x60, 0xd4, 0x60, 0x0e, 0x62, 0xca, 0x4c, 0x11, 0xd2, 0xe1, 0x12, 0x4a, 0xcc, 0xc9, 0x89, 0x2f,
-	0x46, 0x28, 0x8d, 0xcf, 0x4c, 0x91, 0x60, 0x02, 0xcb, 0x0b, 0x24, 0xe6, 0xe4, 0x20, 0x99, 0xe1,
-	0x99, 0x22, 0x24, 0xcd, 0xc5, 0x59, 0x06, 0x36, 0x1a, 0xa4, 0x88, 0x19, 0xac, 0x88, 0x03, 0x22,
-	0xe0, 0x99, 0xa2, 0xd4, 0xc2, 0xc8, 0xa5, 0xe6, 0x5c, 0x94, 0x9a, 0x58, 0x92, 0x8a, 0xd3, 0xfa,
-	0xa0, 0xd4, 0xc2, 0xd2, 0xd4, 0xe2, 0x12, 0xa1, 0x28, 0x2e, 0x69, 0xa8, 0x39, 0xc8, 0x16, 0xc3,
-	0xfc, 0x01, 0x76, 0x1e, 0xb7, 0x91, 0x94, 0x1e, 0x6e, 0x73, 0x24, 0xcb, 0x70, 0x49, 0x29, 0x69,
-	0x72, 0xa9, 0x13, 0x74, 0x45, 0x71, 0x41, 0x7e, 0x5e, 0x71, 0xaa, 0x92, 0x1a, 0x97, 0x8a, 0x7b,
-	0x6a, 0x09, 0x4e, 0x75, 0xc5, 0x50, 0xe7, 0x2a, 0x35, 0x33, 0x72, 0xa9, 0x12, 0x50, 0x08, 0x31,
-	0x91, 0xb0, 0xc7, 0x98, 0xc9, 0xf7, 0x98, 0x25, 0x97, 0x3a, 0x3e, 0x47, 0x38, 0x55, 0x7a, 0xa6,
-	0xc0, 0xc2, 0x17, 0x2d, 0x96, 0x95, 0xda, 0x18, 0xb9, 0x34, 0x08, 0xeb, 0x25, 0xd6, 0x0f, 0x14,
-	0x44, 0x0e, 0x28, 0x8d, 0x84, 0x16, 0xa4, 0x0c, 0x82, 0x34, 0x42, 0xd0, 0x15, 0x90, 0xd0, 0x70,
-	0xe2, 0x8f, 0xe2, 0xcd, 0xc9, 0x4f, 0x4e, 0xcc, 0x29, 0x4e, 0x2d, 0x2a, 0xcb, 0x4c, 0x4e, 0x2d,
-	0x4e, 0x62, 0x03, 0xe7, 0x32, 0x63, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0xad, 0x30, 0x87, 0x33,
-	0x7c, 0x03, 0x00, 0x00,
+var fileDescriptor_area_coverage_45fc85af3b0d437d = []byte{
+	// 623 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x56, 0xd1, 0x6e, 0xd3, 0x30,
+	0x14, 0x55, 0x9b, 0xd2, 0xb1, 0xbb, 0xd1, 0x16, 0x77, 0x48, 0x15, 0x6b, 0x69, 0x9a, 0xf1, 0x50,
+	0x21, 0x54, 0x50, 0xfb, 0x01, 0x88, 0x75, 0x12, 0xea, 0x03, 0x12, 0xea, 0xb4, 0x17, 0x5e, 0xa6,
+	0x2c, 0xbe, 0x9a, 0x2c, 0xba, 0x3a, 0x24, 0xa1, 0x52, 0xff, 0x82, 0xef, 0xe4, 0x1b, 0x78, 0x40,
+	0x75, 0x9c, 0x38, 0x4e, 0x9c, 0xd0, 0x21, 0xb6, 0xb7, 0xcd, 0xf7, 0xf8, 0x9e, 0x93, 0x6b, 0x1f,
+	0x9f, 0x42, 0xd7, 0x0d, 0xd0, 0xbd, 0xf6, 0xf8, 0x06, 0x03, 0xf7, 0x16, 0x27, 0x7e, 0xc0, 0x23,
+	0xee, 0xfc, 0xaa, 0x41, 0xf7, 0x63, 0x80, 0xee, 0x97, 0x80, 0x6f, 0xd8, 0xda, 0xc3, 0xcf, 0xae,
+	0xef, 0xb3, 0xf5, 0x2d, 0x69, 0x41, 0x9d, 0xd1, 0x5e, 0xcd, 0xae, 0x8d, 0xad, 0x65, 0x9d, 0x51,
+	0x72, 0x0a, 0x87, 0x1b, 0x5c, 0x53, 0x1e, 0x5c, 0x33, 0xda, 0xab, 0x8b, 0xe5, 0xa7, 0xf1, 0xc2,
+	0x82, 0x92, 0xb7, 0x40, 0x64, 0xd1, 0x97, 0x6d, 0x76, 0x28, 0x4b, 0xa0, 0x3a, 0x71, 0x25, 0xe9,
+	0xbf, 0xa0, 0xe4, 0x3d, 0x9c, 0xe4, 0xd1, 0x1e, 0xa7, 0xd8, 0x6b, 0xd8, 0xb5, 0xf1, 0xe1, 0x92,
+	0xe8, 0xf8, 0x39, 0xa7, 0x48, 0x08, 0x34, 0xd6, 0xee, 0x1d, 0xf6, 0x9e, 0x08, 0x84, 0xf8, 0x9b,
+	0x4c, 0xe1, 0x45, 0xc4, 0xbf, 0x71, 0x1f, 0x29, 0x73, 0x35, 0xda, 0xa6, 0xa0, 0xed, 0xa6, 0x45,
+	0xc5, 0xec, 0x78, 0x60, 0xcf, 0x03, 0x74, 0x23, 0x34, 0x7c, 0xf1, 0x12, 0xbf, 0xff, 0xc0, 0x30,
+	0x22, 0x1f, 0xa0, 0x93, 0x76, 0xbb, 0x8b, 0x4b, 0x62, 0x0c, 0x47, 0xd3, 0x93, 0x89, 0x69, 0x5b,
+	0xdb, 0xd7, 0x17, 0x9c, 0x33, 0x18, 0x55, 0x90, 0x84, 0x3e, 0x5f, 0x87, 0xe8, 0xd8, 0xf0, 0xea,
+	0x13, 0x46, 0x06, 0x44, 0x28, 0x75, 0x38, 0x37, 0x30, 0x2c, 0x45, 0xc4, 0x4d, 0x4a, 0xa4, 0x5a,
+	0xfb, 0x4b, 0x9d, 0xc1, 0xc8, 0xcc, 0x71, 0xbe, 0x5d, 0xd0, 0x64, 0x20, 0xb9, 0x9b, 0xe0, 0x20,
+	0x38, 0x55, 0x9b, 0x2a, 0xb5, 0xdd, 0x63, 0x8c, 0x1e, 0xd8, 0x57, 0x3e, 0x7d, 0xf8, 0xb3, 0xaa,
+	0x20, 0x91, 0x67, 0x35, 0x05, 0xfb, 0x02, 0x57, 0x58, 0xa9, 0x24, 0x3f, 0xa4, 0x33, 0x18, 0x55,
+	0xec, 0x91, 0x8d, 0x7f, 0xd7, 0xa0, 0xbd, 0xab, 0xcf, 0x59, 0xb4, 0x7d, 0x04, 0xdf, 0xbd, 0x86,
+	0x96, 0x44, 0x7b, 0x2c, 0xda, 0xee, 0x90, 0x0d, 0x81, 0x3c, 0x8e, 0x57, 0x77, 0x2a, 0x16, 0x94,
+	0x8c, 0xa1, 0x93, 0x45, 0x09, 0x67, 0xc6, 0xbe, 0x6b, 0x29, 0x9c, 0xe6, 0xca, 0x66, 0xc6, 0x95,
+	0x6f, 0xe0, 0xb9, 0x72, 0x65, 0x42, 0x73, 0x20, 0x68, 0xda, 0x69, 0x21, 0x66, 0x72, 0x2e, 0xa1,
+	0xaf, 0x8c, 0x92, 0x99, 0x41, 0x32, 0xd3, 0x19, 0x1c, 0x8b, 0x0e, 0xfa, 0xc9, 0x76, 0x26, 0x79,
+	0xf8, 0x91, 0xa7, 0xfe, 0x71, 0x86, 0x30, 0x28, 0x69, 0x2a, 0x87, 0xde, 0x87, 0x97, 0xf2, 0xfa,
+	0x66, 0xaa, 0xa9, 0xeb, 0x96, 0x70, 0x6a, 0xac, 0xca, 0x5b, 0x5d, 0x94, 0x64, 0xfd, 0x5d, 0xd2,
+	0x3b, 0x18, 0x14, 0x7b, 0x56, 0x39, 0xec, 0x2a, 0x7d, 0x1c, 0x0a, 0x1b, 0x4a, 0x75, 0xec, 0x31,
+	0x9a, 0x4b, 0xe8, 0xab, 0xcb, 0xfe, 0x1f, 0xe7, 0x5d, 0xd2, 0x54, 0xce, 0x7b, 0x02, 0x7d, 0xe5,
+	0x04, 0x03, 0x6b, 0xfe, 0xe3, 0x87, 0x30, 0x28, 0xc1, 0xcb, 0x86, 0x3f, 0xeb, 0x71, 0x62, 0x5d,
+	0xb0, 0x30, 0x0a, 0x98, 0x17, 0xfd, 0x93, 0x73, 0x8a, 0x5e, 0xb0, 0x0c, 0x5e, 0x50, 0xfe, 0xa2,
+	0x92, 0x4c, 0xb9, 0x46, 0xba, 0x24, 0x51, 0xa1, 0xe5, 0x5a, 0x8a, 0xce, 0xb8, 0x87, 0xe8, 0xf8,
+	0x52, 0x07, 0x69, 0xb9, 0x96, 0xa5, 0x3d, 0xc8, 0xe5, 0x9a, 0x62, 0xd6, 0x73, 0x2d, 0x37, 0x97,
+	0xcc, 0x5b, 0x99, 0x76, 0x33, 0xbd, 0x95, 0xf9, 0x6d, 0x6d, 0xaa, 0x2f, 0xe8, 0xb9, 0x56, 0x20,
+	0x29, 0xe4, 0x5a, 0x0e, 0x61, 0xc8, 0xb5, 0x22, 0x42, 0x65, 0x87, 0x41, 0xaa, 0xb5, 0xbf, 0x54,
+	0x95, 0x6b, 0x39, 0xe8, 0x7e, 0xb9, 0x66, 0xdc, 0x54, 0xa9, 0xed, 0x1e, 0x63, 0xd4, 0x72, 0xed,
+	0x01, 0xcf, 0xaa, 0x82, 0xc4, 0x94, 0x6b, 0x25, 0x4a, 0x2a, 0x73, 0xad, 0xa4, 0xf1, 0x79, 0xfb,
+	0xeb, 0xb3, 0x15, 0xf7, 0xdc, 0x55, 0x88, 0xc1, 0x86, 0x79, 0x18, 0xde, 0x34, 0xc5, 0x6f, 0xcd,
+	0xd9, 0x9f, 0x00, 0x00, 0x00, 0xff, 0xff, 0x99, 0x9e, 0x47, 0x97, 0x82, 0x0a, 0x00, 0x00,
 }

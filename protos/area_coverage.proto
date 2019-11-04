@@ -2,34 +2,127 @@ syntax = "proto3";
 
 option go_package = "localservices";
 
-message VendorSubprovinceCoverage {
+message AreaProvinceMapping {
     int64 id = 1;
-    int64 all_subprovince_id = 2;
-    int64 vendor_id = 3;
+    int64 vendor_id = 2;
+    int64 vendor_province_id = 3;
+    string vendor_province_code = 4;
+    string name = 5;
+    int64 tokopedia_province_id = 6;
 }
 
-message CreateVendorSubprovinceCoverageRequest {
-	VendorSubprovinceCoverage vendor_subprovince_coverage = 1;
+message CreateAreaProvinceMappingRequest {
+	AreaProvinceMapping province_mapping = 1;
 }
 
-message CreateVendorSubprovinceCoverageResponse {}
+message CreateAreaProvinceMappingResponse {}
 
-message GetVendorSubprovinceCoveragesRequest {}
+message GetAreaProvinceMappingsRequest {}
 
-message GetVendorSubprovinceCoveragesResponse {
-	repeated VendorSubprovinceCoverage vendor_subprovince_coverage = 1;
+message GetAreaProvinceMappingsResponse {
+	repeated AreaProvinceMapping province_mapping = 1;
 }
 
-message GetVendorSubprovinceCoverageByIdRequest {
+message GetAreaProvinceMappingByIdRequest {
 	int64 id = 1;
 }
 
-message GetVendorSubprovinceCoverageByIdResponse {
-	VendorSubprovinceCoverage vendor_subprovince_coverage = 1;
+message GetAreaProvinceMappingByIdResponse {
+	AreaProvinceMapping province_mapping = 1;
 }
 
-message UpdateVendorSubprovinceCoverageRequest {
-	VendorSubprovinceCoverage vendor_subprovince_coverage = 1;
+message UpdateAreaProvinceMappingRequest {
+	AreaProvinceMapping province_mapping = 1;
 }
 
-message UpdateVendorSubprovinceCoverageResponse {}
+message UpdateAreaProvinceMappingResponse {}
+
+message DeleteAreaProvinceMappingRequest {
+	int64 id = 1;
+}
+
+message DeleteAreaProvinceMappingResponse {}
+
+message AreaCityMapping {
+    int64 id = 1;
+    int64 vendor_id = 2;
+    int64 vendor_province_id = 3;
+    int64 vendor_city_id = 4;
+    string vendor_city_code = 5;
+    string name = 6;
+    int64 tokopedia_city_id = 7;
+}
+
+message CreateAreaCityMappingRequest {
+	AreaCityMapping city_mapping = 1;
+}
+
+message CreateAreaCityMappingResponse {}
+
+message GetAreaCityMappingsRequest {}
+
+message GetAreaCityMappingsResponse {
+	repeated AreaCityMapping city_mapping = 1;
+}
+
+message GetAreaCityMappingByIdRequest {
+	int64 id = 1;
+}
+
+message GetAreaCityMappingByIdResponse {
+	AreaCityMapping city_mapping = 1;
+}
+
+message UpdateAreaCityMappingRequest {
+	AreaCityMapping city_mapping = 1;
+}
+
+message UpdateAreaCityMappingResponse {}
+
+message DeleteAreaCityMappingRequest {
+	int64 id = 1;
+}
+
+message DeleteAreaCityMappingResponse {}
+
+message AreaDistrictMapping {
+    int64 id = 1;
+    int64 vendor_id = 2;
+    int64 vendor_city_id = 3;
+    int64 vendor_district_id = 4;
+    string vendor_district_code = 5;
+    string name = 6;
+    int64 tokopedia_district_id = 7;
+}
+
+message CreateAreaDistrictMappingRequest {
+	AreaDistrictMapping district_mapping = 1;
+}
+
+message CreateAreaDistrictMappingResponse {}
+
+message GetAreaDistrictMappingsRequest {}
+
+message GetAreaDistrictMappingsResponse {
+	repeated AreaDistrictMapping district_mapping = 1;
+}
+
+message GetAreaDistrictMappingByIdRequest {
+	int64 id = 1;
+}
+
+message GetAreaDistrictMappingByIdResponse {
+	AreaDistrictMapping district_mapping = 1;
+}
+
+message UpdateAreaDistrictMappingRequest {
+	AreaDistrictMapping district_mapping = 1;
+}
+
+message UpdateAreaDistrictMappingResponse {}
+
+message DeleteAreaDistrictMappingRequest {
+	int64 id = 1;
+}
+
+message DeleteAreaDistrictMappingResponse {}

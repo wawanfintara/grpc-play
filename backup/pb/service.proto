@@ -2,33 +2,22 @@ syntax = "proto3";
 
 option go_package = "localservices";
 
-import "product.proto";
+import "products.proto";
 import "product_price.proto";
 import "product_spec_set.proto";
 import "product_spec_value.proto";
 import "order.proto";
+import "checkoutinternal.proto";
 import "payment.proto";
 import "categories.proto";
 import "transaction.proto";
 import "area_coverage.proto";
-import "checkoutinternal.proto";
 
 service LocalServices {
     // Product
     rpc GetProducts(GetProductsRequest) returns (GetProductsResponse) {}
-    rpc GetProductByID(GetProductByIdRequest) returns (GetProductByIdResponse) {}
-    rpc CreateProduct(CreateProductRequest) returns (CreateProductResponse) {}
-    rpc UpdateProduct(UpdateProductRequest) returns (UpdateProductResponse) {}
-    rpc DeleteProduct(DeleteProductRequest) returns (DeleteProductResponse) {}
     rpc GetProductDetail(GetProductDetailRequest) returns (GetProductDetailResponse) {}
     rpc GetProductPrice(GetProductPriceRequest) returns (GetProductPriceResponse) {}
-
-    // ProductMap
-    rpc GetProductMaps(GetProductMapsRequest) returns (GetProductMapsResponse) {}
-    rpc GetProductMapByID(GetProductMapByIdRequest) returns (GetProductMapByIdResponse) {}
-    rpc CreateProductMap(CreateProductMapRequest) returns (CreateProductMapResponse) {}
-    rpc UpdateProductMap(UpdateProductMapRequest) returns (UpdateProductMapResponse) {}
-    rpc DeleteProductMap(DeleteProductMapRequest) returns (DeleteProductMapResponse) {}
     
     // Category
     rpc GetCategories(GetCategoriesRequest) returns (Categories) {}
@@ -85,26 +74,11 @@ service LocalServices {
     rpc CreateTxFulfillment(CreateTxFulfillmentRequest) returns (CreateTxFulfillmentResponse) {}
     rpc UpdateTxFulfillment(UpdateTxFulfillmentRequest) returns (UpdateTxFulfillmentResponse) {}
 
-    // AreaProvinceMapping
-    rpc GetAreaProvinceMappings(GetAreaProvinceMappingsRequest) returns (GetAreaProvinceMappingsResponse) {}
-    rpc GetAreaProvinceMappingByID(GetAreaProvinceMappingByIdRequest) returns (GetAreaProvinceMappingByIdResponse) {}
-    rpc CreateAreaProvinceMapping(CreateAreaProvinceMappingRequest) returns (CreateAreaProvinceMappingResponse) {}
-    rpc UpdateAreaProvinceMapping(UpdateAreaProvinceMappingRequest) returns (UpdateAreaProvinceMappingResponse) {}
-    rpc DeleteAreaProvinceMapping(DeleteAreaProvinceMappingRequest) returns (DeleteAreaProvinceMappingResponse) {}
-
-    // AreaCityMapping
-    rpc GetAreaCityMappings(GetAreaCityMappingsRequest) returns (GetAreaCityMappingsResponse) {}
-    rpc GetAreaCityMappingByID(GetAreaCityMappingByIdRequest) returns (GetAreaCityMappingByIdResponse) {}
-    rpc CreateAreaCityMapping(CreateAreaCityMappingRequest) returns (CreateAreaCityMappingResponse) {}
-    rpc UpdateAreaCityMapping(UpdateAreaCityMappingRequest) returns (UpdateAreaCityMappingResponse) {}
-    rpc DeleteAreaCityMapping(DeleteAreaCityMappingRequest) returns (DeleteAreaCityMappingResponse) {}
-
-    // AreaDistrictMapping
-    rpc GetAreaDistrictMappings(GetAreaDistrictMappingsRequest) returns (GetAreaDistrictMappingsResponse) {}
-    rpc GetAreaDistrictMappingByID(GetAreaDistrictMappingByIdRequest) returns (GetAreaDistrictMappingByIdResponse) {}
-    rpc CreateAreaDistrictMapping(CreateAreaDistrictMappingRequest) returns (CreateAreaDistrictMappingResponse) {}
-    rpc UpdateAreaDistrictMapping(UpdateAreaDistrictMappingRequest) returns (UpdateAreaDistrictMappingResponse) {}
-    rpc DeleteAreaDistrictMapping(DeleteAreaDistrictMappingRequest) returns (DeleteAreaDistrictMappingResponse) {}
+    // VendorSubprovinceCoverage
+    rpc GetVendorSubprovinceCoverages(GetVendorSubprovinceCoveragesRequest) returns (GetVendorSubprovinceCoveragesResponse) {}
+    rpc GetVendorSubprovinceCoverageByID(GetVendorSubprovinceCoverageByIdRequest) returns (GetVendorSubprovinceCoverageByIdResponse) {}
+    rpc CreateVendorSubprovinceCoverage(CreateVendorSubprovinceCoverageRequest) returns (CreateVendorSubprovinceCoverageResponse) {}
+    rpc UpdateVendorSubprovinceCoverage(UpdateVendorSubprovinceCoverageRequest) returns (UpdateVendorSubprovinceCoverageResponse) {}
 
     // Checkout Internal
     rpc CheckoutValidation(CheckoutValidationRequest) returns (CheckoutValidationResponse) {}

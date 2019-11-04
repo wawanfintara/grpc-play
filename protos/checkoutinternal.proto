@@ -3,47 +3,38 @@ syntax = "proto3";
 option go_package = "localservices";
 
 message CheckoutValidationRequest {
-    string business_type = 1;
-    int64 user_id = 2;
-    repeated CartInfo cart_info = 3;
-    string metadata = 4;
-}
-
-message CheckoutValidationResponse {
-    OrderCI order = 1;
+    int64 user_id = 1;
     string metadata = 2;
 }
 
-message CartInfo {
-    int64 quantity = 1;
-    string data_type = 2;
-    RequestField request_field = 3;
+message CheckoutValidationResponse {
+    string metadata = 1;
+    TxCI transaction = 2;
 }
 
-message OrderCI {
-    int64 order_id = 1;
-    int64 amount = 2;
+message TxCI {
+    int64 id = 1; // LS order_id
+    int64 total_transaction = 2;
+    repeated OrderInfoCI orders = 3;
 }
 
-message RequestField {
-    // Product
-    int64 product_id = 1;
-    string name = 2;
-    int64 price = 3;
-    string spec_set = 4;
-    int64 duration_day = 5;
-
-    // Shipping
-    int64 shipping_id = 6;
-    int64 sp_id = 7;
-    int64 origin_address_id = 8;
-    int64 dest_address_id = 9;
-    int64 insurance = 10;
-    int64 order_value = 11;
-
-    // All
-    string dimension = 12;
-    int64 weight = 13;
+message OrderInfoCI {
+    int64 total_amount = 1;
+    string address = 2;
+    ShippingInfoCI shipping = 3;
+    repeated DetailInfoCI details = 4;
 }
 
+message ShippingInfoCI {
+    string shipping_name = 1;
+    int64 shipping_fee = 2;
+    int64 shipping_insurance_fee = 3;
+    string shipper_name = 4;
+}
 
+message DetailInfoCI {
+    string product_name = 1;
+    int64 product_price = 2;
+    int64 quantity = 3;
+    int64 subtotal = 4;
+}

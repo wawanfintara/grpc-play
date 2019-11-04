@@ -37,8 +37,18 @@ const _ = grpc.SupportPackageIsVersion4
 type LocalServicesClient interface {
 	// Product
 	GetProducts(ctx context.Context, in *GetProductsRequest, opts ...grpc.CallOption) (*GetProductsResponse, error)
+	GetProductByID(ctx context.Context, in *GetProductByIdRequest, opts ...grpc.CallOption) (*GetProductByIdResponse, error)
+	CreateProduct(ctx context.Context, in *CreateProductRequest, opts ...grpc.CallOption) (*CreateProductResponse, error)
+	UpdateProduct(ctx context.Context, in *UpdateProductRequest, opts ...grpc.CallOption) (*UpdateProductResponse, error)
+	DeleteProduct(ctx context.Context, in *DeleteProductRequest, opts ...grpc.CallOption) (*DeleteProductResponse, error)
 	GetProductDetail(ctx context.Context, in *GetProductDetailRequest, opts ...grpc.CallOption) (*GetProductDetailResponse, error)
 	GetProductPrice(ctx context.Context, in *GetProductPriceRequest, opts ...grpc.CallOption) (*GetProductPriceResponse, error)
+	// ProductMap
+	GetProductMaps(ctx context.Context, in *GetProductMapsRequest, opts ...grpc.CallOption) (*GetProductMapsResponse, error)
+	GetProductMapByID(ctx context.Context, in *GetProductMapByIdRequest, opts ...grpc.CallOption) (*GetProductMapByIdResponse, error)
+	CreateProductMap(ctx context.Context, in *CreateProductMapRequest, opts ...grpc.CallOption) (*CreateProductMapResponse, error)
+	UpdateProductMap(ctx context.Context, in *UpdateProductMapRequest, opts ...grpc.CallOption) (*UpdateProductMapResponse, error)
+	DeleteProductMap(ctx context.Context, in *DeleteProductMapRequest, opts ...grpc.CallOption) (*DeleteProductMapResponse, error)
 	// Category
 	GetCategories(ctx context.Context, in *GetCategoriesRequest, opts ...grpc.CallOption) (*Categories, error)
 	GetCategoryMaps(ctx context.Context, in *GetCategoryMapsRequest, opts ...grpc.CallOption) (*GetCategoryMapsResponse, error)
@@ -86,11 +96,24 @@ type LocalServicesClient interface {
 	GetTxFulfillmentById(ctx context.Context, in *GetTxFulfillmentByIdRequest, opts ...grpc.CallOption) (*GetTxFulfillmentByIdResponse, error)
 	CreateTxFulfillment(ctx context.Context, in *CreateTxFulfillmentRequest, opts ...grpc.CallOption) (*CreateTxFulfillmentResponse, error)
 	UpdateTxFulfillment(ctx context.Context, in *UpdateTxFulfillmentRequest, opts ...grpc.CallOption) (*UpdateTxFulfillmentResponse, error)
-	// VendorSubprovinceCoverage
-	GetVendorSubprovinceCoverages(ctx context.Context, in *GetVendorSubprovinceCoveragesRequest, opts ...grpc.CallOption) (*GetVendorSubprovinceCoveragesResponse, error)
-	GetVendorSubprovinceCoverageByID(ctx context.Context, in *GetVendorSubprovinceCoverageByIdRequest, opts ...grpc.CallOption) (*GetVendorSubprovinceCoverageByIdResponse, error)
-	CreateVendorSubprovinceCoverage(ctx context.Context, in *CreateVendorSubprovinceCoverageRequest, opts ...grpc.CallOption) (*CreateVendorSubprovinceCoverageResponse, error)
-	UpdateVendorSubprovinceCoverage(ctx context.Context, in *UpdateVendorSubprovinceCoverageRequest, opts ...grpc.CallOption) (*UpdateVendorSubprovinceCoverageResponse, error)
+	// AreaProvinceMapping
+	GetAreaProvinceMappings(ctx context.Context, in *GetAreaProvinceMappingsRequest, opts ...grpc.CallOption) (*GetAreaProvinceMappingsResponse, error)
+	GetAreaProvinceMappingByID(ctx context.Context, in *GetAreaProvinceMappingByIdRequest, opts ...grpc.CallOption) (*GetAreaProvinceMappingByIdResponse, error)
+	CreateAreaProvinceMapping(ctx context.Context, in *CreateAreaProvinceMappingRequest, opts ...grpc.CallOption) (*CreateAreaProvinceMappingResponse, error)
+	UpdateAreaProvinceMapping(ctx context.Context, in *UpdateAreaProvinceMappingRequest, opts ...grpc.CallOption) (*UpdateAreaProvinceMappingResponse, error)
+	DeleteAreaProvinceMapping(ctx context.Context, in *DeleteAreaProvinceMappingRequest, opts ...grpc.CallOption) (*DeleteAreaProvinceMappingResponse, error)
+	// AreaCityMapping
+	GetAreaCityMappings(ctx context.Context, in *GetAreaCityMappingsRequest, opts ...grpc.CallOption) (*GetAreaCityMappingsResponse, error)
+	GetAreaCityMappingByID(ctx context.Context, in *GetAreaCityMappingByIdRequest, opts ...grpc.CallOption) (*GetAreaCityMappingByIdResponse, error)
+	CreateAreaCityMapping(ctx context.Context, in *CreateAreaCityMappingRequest, opts ...grpc.CallOption) (*CreateAreaCityMappingResponse, error)
+	UpdateAreaCityMapping(ctx context.Context, in *UpdateAreaCityMappingRequest, opts ...grpc.CallOption) (*UpdateAreaCityMappingResponse, error)
+	DeleteAreaCityMapping(ctx context.Context, in *DeleteAreaCityMappingRequest, opts ...grpc.CallOption) (*DeleteAreaCityMappingResponse, error)
+	// AreaDistrictMapping
+	GetAreaDistrictMappings(ctx context.Context, in *GetAreaDistrictMappingsRequest, opts ...grpc.CallOption) (*GetAreaDistrictMappingsResponse, error)
+	GetAreaDistrictMappingByID(ctx context.Context, in *GetAreaDistrictMappingByIdRequest, opts ...grpc.CallOption) (*GetAreaDistrictMappingByIdResponse, error)
+	CreateAreaDistrictMapping(ctx context.Context, in *CreateAreaDistrictMappingRequest, opts ...grpc.CallOption) (*CreateAreaDistrictMappingResponse, error)
+	UpdateAreaDistrictMapping(ctx context.Context, in *UpdateAreaDistrictMappingRequest, opts ...grpc.CallOption) (*UpdateAreaDistrictMappingResponse, error)
+	DeleteAreaDistrictMapping(ctx context.Context, in *DeleteAreaDistrictMappingRequest, opts ...grpc.CallOption) (*DeleteAreaDistrictMappingResponse, error)
 	// Checkout Internal
 	CheckoutValidation(ctx context.Context, in *CheckoutValidationRequest, opts ...grpc.CallOption) (*CheckoutValidationResponse, error)
 }
@@ -112,6 +135,42 @@ func (c *localServicesClient) GetProducts(ctx context.Context, in *GetProductsRe
 	return out, nil
 }
 
+func (c *localServicesClient) GetProductByID(ctx context.Context, in *GetProductByIdRequest, opts ...grpc.CallOption) (*GetProductByIdResponse, error) {
+	out := new(GetProductByIdResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/GetProductByID", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localServicesClient) CreateProduct(ctx context.Context, in *CreateProductRequest, opts ...grpc.CallOption) (*CreateProductResponse, error) {
+	out := new(CreateProductResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/CreateProduct", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localServicesClient) UpdateProduct(ctx context.Context, in *UpdateProductRequest, opts ...grpc.CallOption) (*UpdateProductResponse, error) {
+	out := new(UpdateProductResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/UpdateProduct", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localServicesClient) DeleteProduct(ctx context.Context, in *DeleteProductRequest, opts ...grpc.CallOption) (*DeleteProductResponse, error) {
+	out := new(DeleteProductResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/DeleteProduct", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *localServicesClient) GetProductDetail(ctx context.Context, in *GetProductDetailRequest, opts ...grpc.CallOption) (*GetProductDetailResponse, error) {
 	out := new(GetProductDetailResponse)
 	err := c.cc.Invoke(ctx, "/LocalServices/GetProductDetail", in, out, opts...)
@@ -124,6 +183,51 @@ func (c *localServicesClient) GetProductDetail(ctx context.Context, in *GetProdu
 func (c *localServicesClient) GetProductPrice(ctx context.Context, in *GetProductPriceRequest, opts ...grpc.CallOption) (*GetProductPriceResponse, error) {
 	out := new(GetProductPriceResponse)
 	err := c.cc.Invoke(ctx, "/LocalServices/GetProductPrice", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localServicesClient) GetProductMaps(ctx context.Context, in *GetProductMapsRequest, opts ...grpc.CallOption) (*GetProductMapsResponse, error) {
+	out := new(GetProductMapsResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/GetProductMaps", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localServicesClient) GetProductMapByID(ctx context.Context, in *GetProductMapByIdRequest, opts ...grpc.CallOption) (*GetProductMapByIdResponse, error) {
+	out := new(GetProductMapByIdResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/GetProductMapByID", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localServicesClient) CreateProductMap(ctx context.Context, in *CreateProductMapRequest, opts ...grpc.CallOption) (*CreateProductMapResponse, error) {
+	out := new(CreateProductMapResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/CreateProductMap", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localServicesClient) UpdateProductMap(ctx context.Context, in *UpdateProductMapRequest, opts ...grpc.CallOption) (*UpdateProductMapResponse, error) {
+	out := new(UpdateProductMapResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/UpdateProductMap", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localServicesClient) DeleteProductMap(ctx context.Context, in *DeleteProductMapRequest, opts ...grpc.CallOption) (*DeleteProductMapResponse, error) {
+	out := new(DeleteProductMapResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/DeleteProductMap", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -481,36 +585,135 @@ func (c *localServicesClient) UpdateTxFulfillment(ctx context.Context, in *Updat
 	return out, nil
 }
 
-func (c *localServicesClient) GetVendorSubprovinceCoverages(ctx context.Context, in *GetVendorSubprovinceCoveragesRequest, opts ...grpc.CallOption) (*GetVendorSubprovinceCoveragesResponse, error) {
-	out := new(GetVendorSubprovinceCoveragesResponse)
-	err := c.cc.Invoke(ctx, "/LocalServices/GetVendorSubprovinceCoverages", in, out, opts...)
+func (c *localServicesClient) GetAreaProvinceMappings(ctx context.Context, in *GetAreaProvinceMappingsRequest, opts ...grpc.CallOption) (*GetAreaProvinceMappingsResponse, error) {
+	out := new(GetAreaProvinceMappingsResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/GetAreaProvinceMappings", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *localServicesClient) GetVendorSubprovinceCoverageByID(ctx context.Context, in *GetVendorSubprovinceCoverageByIdRequest, opts ...grpc.CallOption) (*GetVendorSubprovinceCoverageByIdResponse, error) {
-	out := new(GetVendorSubprovinceCoverageByIdResponse)
-	err := c.cc.Invoke(ctx, "/LocalServices/GetVendorSubprovinceCoverageByID", in, out, opts...)
+func (c *localServicesClient) GetAreaProvinceMappingByID(ctx context.Context, in *GetAreaProvinceMappingByIdRequest, opts ...grpc.CallOption) (*GetAreaProvinceMappingByIdResponse, error) {
+	out := new(GetAreaProvinceMappingByIdResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/GetAreaProvinceMappingByID", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *localServicesClient) CreateVendorSubprovinceCoverage(ctx context.Context, in *CreateVendorSubprovinceCoverageRequest, opts ...grpc.CallOption) (*CreateVendorSubprovinceCoverageResponse, error) {
-	out := new(CreateVendorSubprovinceCoverageResponse)
-	err := c.cc.Invoke(ctx, "/LocalServices/CreateVendorSubprovinceCoverage", in, out, opts...)
+func (c *localServicesClient) CreateAreaProvinceMapping(ctx context.Context, in *CreateAreaProvinceMappingRequest, opts ...grpc.CallOption) (*CreateAreaProvinceMappingResponse, error) {
+	out := new(CreateAreaProvinceMappingResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/CreateAreaProvinceMapping", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *localServicesClient) UpdateVendorSubprovinceCoverage(ctx context.Context, in *UpdateVendorSubprovinceCoverageRequest, opts ...grpc.CallOption) (*UpdateVendorSubprovinceCoverageResponse, error) {
-	out := new(UpdateVendorSubprovinceCoverageResponse)
-	err := c.cc.Invoke(ctx, "/LocalServices/UpdateVendorSubprovinceCoverage", in, out, opts...)
+func (c *localServicesClient) UpdateAreaProvinceMapping(ctx context.Context, in *UpdateAreaProvinceMappingRequest, opts ...grpc.CallOption) (*UpdateAreaProvinceMappingResponse, error) {
+	out := new(UpdateAreaProvinceMappingResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/UpdateAreaProvinceMapping", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localServicesClient) DeleteAreaProvinceMapping(ctx context.Context, in *DeleteAreaProvinceMappingRequest, opts ...grpc.CallOption) (*DeleteAreaProvinceMappingResponse, error) {
+	out := new(DeleteAreaProvinceMappingResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/DeleteAreaProvinceMapping", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localServicesClient) GetAreaCityMappings(ctx context.Context, in *GetAreaCityMappingsRequest, opts ...grpc.CallOption) (*GetAreaCityMappingsResponse, error) {
+	out := new(GetAreaCityMappingsResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/GetAreaCityMappings", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localServicesClient) GetAreaCityMappingByID(ctx context.Context, in *GetAreaCityMappingByIdRequest, opts ...grpc.CallOption) (*GetAreaCityMappingByIdResponse, error) {
+	out := new(GetAreaCityMappingByIdResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/GetAreaCityMappingByID", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localServicesClient) CreateAreaCityMapping(ctx context.Context, in *CreateAreaCityMappingRequest, opts ...grpc.CallOption) (*CreateAreaCityMappingResponse, error) {
+	out := new(CreateAreaCityMappingResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/CreateAreaCityMapping", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localServicesClient) UpdateAreaCityMapping(ctx context.Context, in *UpdateAreaCityMappingRequest, opts ...grpc.CallOption) (*UpdateAreaCityMappingResponse, error) {
+	out := new(UpdateAreaCityMappingResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/UpdateAreaCityMapping", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localServicesClient) DeleteAreaCityMapping(ctx context.Context, in *DeleteAreaCityMappingRequest, opts ...grpc.CallOption) (*DeleteAreaCityMappingResponse, error) {
+	out := new(DeleteAreaCityMappingResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/DeleteAreaCityMapping", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localServicesClient) GetAreaDistrictMappings(ctx context.Context, in *GetAreaDistrictMappingsRequest, opts ...grpc.CallOption) (*GetAreaDistrictMappingsResponse, error) {
+	out := new(GetAreaDistrictMappingsResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/GetAreaDistrictMappings", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localServicesClient) GetAreaDistrictMappingByID(ctx context.Context, in *GetAreaDistrictMappingByIdRequest, opts ...grpc.CallOption) (*GetAreaDistrictMappingByIdResponse, error) {
+	out := new(GetAreaDistrictMappingByIdResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/GetAreaDistrictMappingByID", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localServicesClient) CreateAreaDistrictMapping(ctx context.Context, in *CreateAreaDistrictMappingRequest, opts ...grpc.CallOption) (*CreateAreaDistrictMappingResponse, error) {
+	out := new(CreateAreaDistrictMappingResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/CreateAreaDistrictMapping", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localServicesClient) UpdateAreaDistrictMapping(ctx context.Context, in *UpdateAreaDistrictMappingRequest, opts ...grpc.CallOption) (*UpdateAreaDistrictMappingResponse, error) {
+	out := new(UpdateAreaDistrictMappingResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/UpdateAreaDistrictMapping", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *localServicesClient) DeleteAreaDistrictMapping(ctx context.Context, in *DeleteAreaDistrictMappingRequest, opts ...grpc.CallOption) (*DeleteAreaDistrictMappingResponse, error) {
+	out := new(DeleteAreaDistrictMappingResponse)
+	err := c.cc.Invoke(ctx, "/LocalServices/DeleteAreaDistrictMapping", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -530,8 +733,18 @@ func (c *localServicesClient) CheckoutValidation(ctx context.Context, in *Checko
 type LocalServicesServer interface {
 	// Product
 	GetProducts(context.Context, *GetProductsRequest) (*GetProductsResponse, error)
+	GetProductByID(context.Context, *GetProductByIdRequest) (*GetProductByIdResponse, error)
+	CreateProduct(context.Context, *CreateProductRequest) (*CreateProductResponse, error)
+	UpdateProduct(context.Context, *UpdateProductRequest) (*UpdateProductResponse, error)
+	DeleteProduct(context.Context, *DeleteProductRequest) (*DeleteProductResponse, error)
 	GetProductDetail(context.Context, *GetProductDetailRequest) (*GetProductDetailResponse, error)
 	GetProductPrice(context.Context, *GetProductPriceRequest) (*GetProductPriceResponse, error)
+	// ProductMap
+	GetProductMaps(context.Context, *GetProductMapsRequest) (*GetProductMapsResponse, error)
+	GetProductMapByID(context.Context, *GetProductMapByIdRequest) (*GetProductMapByIdResponse, error)
+	CreateProductMap(context.Context, *CreateProductMapRequest) (*CreateProductMapResponse, error)
+	UpdateProductMap(context.Context, *UpdateProductMapRequest) (*UpdateProductMapResponse, error)
+	DeleteProductMap(context.Context, *DeleteProductMapRequest) (*DeleteProductMapResponse, error)
 	// Category
 	GetCategories(context.Context, *GetCategoriesRequest) (*Categories, error)
 	GetCategoryMaps(context.Context, *GetCategoryMapsRequest) (*GetCategoryMapsResponse, error)
@@ -579,11 +792,24 @@ type LocalServicesServer interface {
 	GetTxFulfillmentById(context.Context, *GetTxFulfillmentByIdRequest) (*GetTxFulfillmentByIdResponse, error)
 	CreateTxFulfillment(context.Context, *CreateTxFulfillmentRequest) (*CreateTxFulfillmentResponse, error)
 	UpdateTxFulfillment(context.Context, *UpdateTxFulfillmentRequest) (*UpdateTxFulfillmentResponse, error)
-	// VendorSubprovinceCoverage
-	GetVendorSubprovinceCoverages(context.Context, *GetVendorSubprovinceCoveragesRequest) (*GetVendorSubprovinceCoveragesResponse, error)
-	GetVendorSubprovinceCoverageByID(context.Context, *GetVendorSubprovinceCoverageByIdRequest) (*GetVendorSubprovinceCoverageByIdResponse, error)
-	CreateVendorSubprovinceCoverage(context.Context, *CreateVendorSubprovinceCoverageRequest) (*CreateVendorSubprovinceCoverageResponse, error)
-	UpdateVendorSubprovinceCoverage(context.Context, *UpdateVendorSubprovinceCoverageRequest) (*UpdateVendorSubprovinceCoverageResponse, error)
+	// AreaProvinceMapping
+	GetAreaProvinceMappings(context.Context, *GetAreaProvinceMappingsRequest) (*GetAreaProvinceMappingsResponse, error)
+	GetAreaProvinceMappingByID(context.Context, *GetAreaProvinceMappingByIdRequest) (*GetAreaProvinceMappingByIdResponse, error)
+	CreateAreaProvinceMapping(context.Context, *CreateAreaProvinceMappingRequest) (*CreateAreaProvinceMappingResponse, error)
+	UpdateAreaProvinceMapping(context.Context, *UpdateAreaProvinceMappingRequest) (*UpdateAreaProvinceMappingResponse, error)
+	DeleteAreaProvinceMapping(context.Context, *DeleteAreaProvinceMappingRequest) (*DeleteAreaProvinceMappingResponse, error)
+	// AreaCityMapping
+	GetAreaCityMappings(context.Context, *GetAreaCityMappingsRequest) (*GetAreaCityMappingsResponse, error)
+	GetAreaCityMappingByID(context.Context, *GetAreaCityMappingByIdRequest) (*GetAreaCityMappingByIdResponse, error)
+	CreateAreaCityMapping(context.Context, *CreateAreaCityMappingRequest) (*CreateAreaCityMappingResponse, error)
+	UpdateAreaCityMapping(context.Context, *UpdateAreaCityMappingRequest) (*UpdateAreaCityMappingResponse, error)
+	DeleteAreaCityMapping(context.Context, *DeleteAreaCityMappingRequest) (*DeleteAreaCityMappingResponse, error)
+	// AreaDistrictMapping
+	GetAreaDistrictMappings(context.Context, *GetAreaDistrictMappingsRequest) (*GetAreaDistrictMappingsResponse, error)
+	GetAreaDistrictMappingByID(context.Context, *GetAreaDistrictMappingByIdRequest) (*GetAreaDistrictMappingByIdResponse, error)
+	CreateAreaDistrictMapping(context.Context, *CreateAreaDistrictMappingRequest) (*CreateAreaDistrictMappingResponse, error)
+	UpdateAreaDistrictMapping(context.Context, *UpdateAreaDistrictMappingRequest) (*UpdateAreaDistrictMappingResponse, error)
+	DeleteAreaDistrictMapping(context.Context, *DeleteAreaDistrictMappingRequest) (*DeleteAreaDistrictMappingResponse, error)
 	// Checkout Internal
 	CheckoutValidation(context.Context, *CheckoutValidationRequest) (*CheckoutValidationResponse, error)
 }
@@ -606,6 +832,78 @@ func _LocalServices_GetProducts_Handler(srv interface{}, ctx context.Context, de
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(LocalServicesServer).GetProducts(ctx, req.(*GetProductsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalServices_GetProductByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProductByIdRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalServicesServer).GetProductByID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/LocalServices/GetProductByID",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalServicesServer).GetProductByID(ctx, req.(*GetProductByIdRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalServices_CreateProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateProductRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalServicesServer).CreateProduct(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/LocalServices/CreateProduct",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalServicesServer).CreateProduct(ctx, req.(*CreateProductRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalServices_UpdateProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateProductRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalServicesServer).UpdateProduct(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/LocalServices/UpdateProduct",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalServicesServer).UpdateProduct(ctx, req.(*UpdateProductRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalServices_DeleteProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteProductRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalServicesServer).DeleteProduct(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/LocalServices/DeleteProduct",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalServicesServer).DeleteProduct(ctx, req.(*DeleteProductRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -642,6 +940,96 @@ func _LocalServices_GetProductPrice_Handler(srv interface{}, ctx context.Context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(LocalServicesServer).GetProductPrice(ctx, req.(*GetProductPriceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalServices_GetProductMaps_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProductMapsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalServicesServer).GetProductMaps(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/LocalServices/GetProductMaps",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalServicesServer).GetProductMaps(ctx, req.(*GetProductMapsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalServices_GetProductMapByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProductMapByIdRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalServicesServer).GetProductMapByID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/LocalServices/GetProductMapByID",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalServicesServer).GetProductMapByID(ctx, req.(*GetProductMapByIdRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalServices_CreateProductMap_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateProductMapRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalServicesServer).CreateProductMap(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/LocalServices/CreateProductMap",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalServicesServer).CreateProductMap(ctx, req.(*CreateProductMapRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalServices_UpdateProductMap_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateProductMapRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalServicesServer).UpdateProductMap(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/LocalServices/UpdateProductMap",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalServicesServer).UpdateProductMap(ctx, req.(*UpdateProductMapRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalServices_DeleteProductMap_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteProductMapRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalServicesServer).DeleteProductMap(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/LocalServices/DeleteProductMap",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalServicesServer).DeleteProductMap(ctx, req.(*DeleteProductMapRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1348,74 +1736,272 @@ func _LocalServices_UpdateTxFulfillment_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LocalServices_GetVendorSubprovinceCoverages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetVendorSubprovinceCoveragesRequest)
+func _LocalServices_GetAreaProvinceMappings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAreaProvinceMappingsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LocalServicesServer).GetVendorSubprovinceCoverages(ctx, in)
+		return srv.(LocalServicesServer).GetAreaProvinceMappings(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/LocalServices/GetVendorSubprovinceCoverages",
+		FullMethod: "/LocalServices/GetAreaProvinceMappings",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LocalServicesServer).GetVendorSubprovinceCoverages(ctx, req.(*GetVendorSubprovinceCoveragesRequest))
+		return srv.(LocalServicesServer).GetAreaProvinceMappings(ctx, req.(*GetAreaProvinceMappingsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LocalServices_GetVendorSubprovinceCoverageByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetVendorSubprovinceCoverageByIdRequest)
+func _LocalServices_GetAreaProvinceMappingByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAreaProvinceMappingByIdRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LocalServicesServer).GetVendorSubprovinceCoverageByID(ctx, in)
+		return srv.(LocalServicesServer).GetAreaProvinceMappingByID(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/LocalServices/GetVendorSubprovinceCoverageByID",
+		FullMethod: "/LocalServices/GetAreaProvinceMappingByID",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LocalServicesServer).GetVendorSubprovinceCoverageByID(ctx, req.(*GetVendorSubprovinceCoverageByIdRequest))
+		return srv.(LocalServicesServer).GetAreaProvinceMappingByID(ctx, req.(*GetAreaProvinceMappingByIdRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LocalServices_CreateVendorSubprovinceCoverage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateVendorSubprovinceCoverageRequest)
+func _LocalServices_CreateAreaProvinceMapping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateAreaProvinceMappingRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LocalServicesServer).CreateVendorSubprovinceCoverage(ctx, in)
+		return srv.(LocalServicesServer).CreateAreaProvinceMapping(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/LocalServices/CreateVendorSubprovinceCoverage",
+		FullMethod: "/LocalServices/CreateAreaProvinceMapping",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LocalServicesServer).CreateVendorSubprovinceCoverage(ctx, req.(*CreateVendorSubprovinceCoverageRequest))
+		return srv.(LocalServicesServer).CreateAreaProvinceMapping(ctx, req.(*CreateAreaProvinceMappingRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _LocalServices_UpdateVendorSubprovinceCoverage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateVendorSubprovinceCoverageRequest)
+func _LocalServices_UpdateAreaProvinceMapping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateAreaProvinceMappingRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(LocalServicesServer).UpdateVendorSubprovinceCoverage(ctx, in)
+		return srv.(LocalServicesServer).UpdateAreaProvinceMapping(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/LocalServices/UpdateVendorSubprovinceCoverage",
+		FullMethod: "/LocalServices/UpdateAreaProvinceMapping",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LocalServicesServer).UpdateVendorSubprovinceCoverage(ctx, req.(*UpdateVendorSubprovinceCoverageRequest))
+		return srv.(LocalServicesServer).UpdateAreaProvinceMapping(ctx, req.(*UpdateAreaProvinceMappingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalServices_DeleteAreaProvinceMapping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteAreaProvinceMappingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalServicesServer).DeleteAreaProvinceMapping(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/LocalServices/DeleteAreaProvinceMapping",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalServicesServer).DeleteAreaProvinceMapping(ctx, req.(*DeleteAreaProvinceMappingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalServices_GetAreaCityMappings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAreaCityMappingsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalServicesServer).GetAreaCityMappings(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/LocalServices/GetAreaCityMappings",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalServicesServer).GetAreaCityMappings(ctx, req.(*GetAreaCityMappingsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalServices_GetAreaCityMappingByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAreaCityMappingByIdRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalServicesServer).GetAreaCityMappingByID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/LocalServices/GetAreaCityMappingByID",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalServicesServer).GetAreaCityMappingByID(ctx, req.(*GetAreaCityMappingByIdRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalServices_CreateAreaCityMapping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateAreaCityMappingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalServicesServer).CreateAreaCityMapping(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/LocalServices/CreateAreaCityMapping",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalServicesServer).CreateAreaCityMapping(ctx, req.(*CreateAreaCityMappingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalServices_UpdateAreaCityMapping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateAreaCityMappingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalServicesServer).UpdateAreaCityMapping(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/LocalServices/UpdateAreaCityMapping",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalServicesServer).UpdateAreaCityMapping(ctx, req.(*UpdateAreaCityMappingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalServices_DeleteAreaCityMapping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteAreaCityMappingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalServicesServer).DeleteAreaCityMapping(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/LocalServices/DeleteAreaCityMapping",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalServicesServer).DeleteAreaCityMapping(ctx, req.(*DeleteAreaCityMappingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalServices_GetAreaDistrictMappings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAreaDistrictMappingsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalServicesServer).GetAreaDistrictMappings(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/LocalServices/GetAreaDistrictMappings",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalServicesServer).GetAreaDistrictMappings(ctx, req.(*GetAreaDistrictMappingsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalServices_GetAreaDistrictMappingByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAreaDistrictMappingByIdRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalServicesServer).GetAreaDistrictMappingByID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/LocalServices/GetAreaDistrictMappingByID",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalServicesServer).GetAreaDistrictMappingByID(ctx, req.(*GetAreaDistrictMappingByIdRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalServices_CreateAreaDistrictMapping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateAreaDistrictMappingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalServicesServer).CreateAreaDistrictMapping(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/LocalServices/CreateAreaDistrictMapping",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalServicesServer).CreateAreaDistrictMapping(ctx, req.(*CreateAreaDistrictMappingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalServices_UpdateAreaDistrictMapping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateAreaDistrictMappingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalServicesServer).UpdateAreaDistrictMapping(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/LocalServices/UpdateAreaDistrictMapping",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalServicesServer).UpdateAreaDistrictMapping(ctx, req.(*UpdateAreaDistrictMappingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _LocalServices_DeleteAreaDistrictMapping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteAreaDistrictMappingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocalServicesServer).DeleteAreaDistrictMapping(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/LocalServices/DeleteAreaDistrictMapping",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocalServicesServer).DeleteAreaDistrictMapping(ctx, req.(*DeleteAreaDistrictMappingRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1447,12 +2033,48 @@ var _LocalServices_serviceDesc = grpc.ServiceDesc{
 			Handler:    _LocalServices_GetProducts_Handler,
 		},
 		{
+			MethodName: "GetProductByID",
+			Handler:    _LocalServices_GetProductByID_Handler,
+		},
+		{
+			MethodName: "CreateProduct",
+			Handler:    _LocalServices_CreateProduct_Handler,
+		},
+		{
+			MethodName: "UpdateProduct",
+			Handler:    _LocalServices_UpdateProduct_Handler,
+		},
+		{
+			MethodName: "DeleteProduct",
+			Handler:    _LocalServices_DeleteProduct_Handler,
+		},
+		{
 			MethodName: "GetProductDetail",
 			Handler:    _LocalServices_GetProductDetail_Handler,
 		},
 		{
 			MethodName: "GetProductPrice",
 			Handler:    _LocalServices_GetProductPrice_Handler,
+		},
+		{
+			MethodName: "GetProductMaps",
+			Handler:    _LocalServices_GetProductMaps_Handler,
+		},
+		{
+			MethodName: "GetProductMapByID",
+			Handler:    _LocalServices_GetProductMapByID_Handler,
+		},
+		{
+			MethodName: "CreateProductMap",
+			Handler:    _LocalServices_CreateProductMap_Handler,
+		},
+		{
+			MethodName: "UpdateProductMap",
+			Handler:    _LocalServices_UpdateProductMap_Handler,
+		},
+		{
+			MethodName: "DeleteProductMap",
+			Handler:    _LocalServices_DeleteProductMap_Handler,
 		},
 		{
 			MethodName: "GetCategories",
@@ -1611,20 +2233,64 @@ var _LocalServices_serviceDesc = grpc.ServiceDesc{
 			Handler:    _LocalServices_UpdateTxFulfillment_Handler,
 		},
 		{
-			MethodName: "GetVendorSubprovinceCoverages",
-			Handler:    _LocalServices_GetVendorSubprovinceCoverages_Handler,
+			MethodName: "GetAreaProvinceMappings",
+			Handler:    _LocalServices_GetAreaProvinceMappings_Handler,
 		},
 		{
-			MethodName: "GetVendorSubprovinceCoverageByID",
-			Handler:    _LocalServices_GetVendorSubprovinceCoverageByID_Handler,
+			MethodName: "GetAreaProvinceMappingByID",
+			Handler:    _LocalServices_GetAreaProvinceMappingByID_Handler,
 		},
 		{
-			MethodName: "CreateVendorSubprovinceCoverage",
-			Handler:    _LocalServices_CreateVendorSubprovinceCoverage_Handler,
+			MethodName: "CreateAreaProvinceMapping",
+			Handler:    _LocalServices_CreateAreaProvinceMapping_Handler,
 		},
 		{
-			MethodName: "UpdateVendorSubprovinceCoverage",
-			Handler:    _LocalServices_UpdateVendorSubprovinceCoverage_Handler,
+			MethodName: "UpdateAreaProvinceMapping",
+			Handler:    _LocalServices_UpdateAreaProvinceMapping_Handler,
+		},
+		{
+			MethodName: "DeleteAreaProvinceMapping",
+			Handler:    _LocalServices_DeleteAreaProvinceMapping_Handler,
+		},
+		{
+			MethodName: "GetAreaCityMappings",
+			Handler:    _LocalServices_GetAreaCityMappings_Handler,
+		},
+		{
+			MethodName: "GetAreaCityMappingByID",
+			Handler:    _LocalServices_GetAreaCityMappingByID_Handler,
+		},
+		{
+			MethodName: "CreateAreaCityMapping",
+			Handler:    _LocalServices_CreateAreaCityMapping_Handler,
+		},
+		{
+			MethodName: "UpdateAreaCityMapping",
+			Handler:    _LocalServices_UpdateAreaCityMapping_Handler,
+		},
+		{
+			MethodName: "DeleteAreaCityMapping",
+			Handler:    _LocalServices_DeleteAreaCityMapping_Handler,
+		},
+		{
+			MethodName: "GetAreaDistrictMappings",
+			Handler:    _LocalServices_GetAreaDistrictMappings_Handler,
+		},
+		{
+			MethodName: "GetAreaDistrictMappingByID",
+			Handler:    _LocalServices_GetAreaDistrictMappingByID_Handler,
+		},
+		{
+			MethodName: "CreateAreaDistrictMapping",
+			Handler:    _LocalServices_CreateAreaDistrictMapping_Handler,
+		},
+		{
+			MethodName: "UpdateAreaDistrictMapping",
+			Handler:    _LocalServices_UpdateAreaDistrictMapping_Handler,
+		},
+		{
+			MethodName: "DeleteAreaDistrictMapping",
+			Handler:    _LocalServices_DeleteAreaDistrictMapping_Handler,
 		},
 		{
 			MethodName: "CheckoutValidation",
@@ -1635,67 +2301,81 @@ var _LocalServices_serviceDesc = grpc.ServiceDesc{
 	Metadata: "service.proto",
 }
 
-func init() { proto.RegisterFile("service.proto", fileDescriptor_service_faca1b9666c20f96) }
+func init() { proto.RegisterFile("service.proto", fileDescriptor_service_4258613a39d9a472) }
 
-var fileDescriptor_service_faca1b9666c20f96 = []byte{
-	// 933 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x58, 0x5d, 0x6f, 0x23, 0x35,
-	0x14, 0xdd, 0xa7, 0x15, 0x72, 0x95, 0xdd, 0xae, 0xb3, 0xed, 0x26, 0xe9, 0x47, 0xd2, 0x20, 0x4a,
-	0x79, 0xf1, 0x03, 0x88, 0x17, 0x78, 0x41, 0x4d, 0xd5, 0xa8, 0x52, 0x51, 0xab, 0x86, 0x56, 0x08,
-	0x24, 0x2a, 0x77, 0xc6, 0x94, 0x11, 0xc3, 0xcc, 0x30, 0x76, 0x22, 0xf2, 0x77, 0xf9, 0x25, 0x68,
-	0xc6, 0xe3, 0xef, 0xeb, 0x09, 0x6f, 0xeb, 0x73, 0x4e, 0xce, 0xb5, 0xef, 0xb1, 0x77, 0xec, 0xa2,
-	0x01, 0x67, 0xf5, 0x26, 0x4b, 0x18, 0xa9, 0xea, 0x52, 0x94, 0x93, 0x77, 0x55, 0x5d, 0xa6, 0xeb,
-	0x44, 0xf0, 0x6e, 0x3c, 0xec, 0xc6, 0xcf, 0x55, 0x6d, 0x44, 0x87, 0x0a, 0xe4, 0x15, 0x4b, 0x9e,
-	0x39, 0x13, 0x1d, 0x3e, 0x72, 0xf0, 0x0d, 0xcd, 0xd7, 0xea, 0x17, 0x7b, 0x65, 0x9d, 0xb2, 0x5a,
-	0xfd, 0x3c, 0xf9, 0x83, 0x25, 0x7f, 0x96, 0x6b, 0x91, 0x15, 0x82, 0xd5, 0x05, 0xcd, 0x3b, 0x7c,
-	0x50, 0xd1, 0xed, 0x5f, 0xac, 0x50, 0x6e, 0xfb, 0x09, 0x15, 0xec, 0xb5, 0xac, 0x33, 0xa6, 0x26,
-	0xf3, 0x41, 0xd4, 0xb4, 0xe0, 0x34, 0x11, 0x59, 0x59, 0xa8, 0xf9, 0xd1, 0x9a, 0xd1, 0xe7, 0xa4,
-	0xdc, 0xb0, 0x9a, 0xbe, 0x76, 0xd5, 0xbe, 0xfe, 0x77, 0x8a, 0x06, 0xb7, 0x65, 0x42, 0xf3, 0x95,
-	0x5c, 0x1b, 0xc7, 0xdf, 0xa1, 0xbd, 0x25, 0x13, 0xf7, 0xdd, 0xda, 0xf0, 0x90, 0x58, 0xa3, 0x07,
-	0xf6, 0xf7, 0x9a, 0x71, 0x31, 0xf9, 0xe8, 0x82, 0xbc, 0x2a, 0x0b, 0xce, 0xe6, 0x6f, 0xf0, 0x0d,
-	0xda, 0x37, 0xc4, 0x15, 0x13, 0x34, 0xcb, 0xf1, 0x88, 0xf8, 0x90, 0x72, 0x19, 0x03, 0x8c, 0xb6,
-	0xba, 0x46, 0xef, 0x0d, 0x7b, 0xdf, 0x74, 0x14, 0x7f, 0x22, 0x1e, 0xa2, 0x8c, 0x46, 0x21, 0xa1,
-	0x7d, 0xbe, 0x45, 0x83, 0x25, 0x13, 0x0b, 0xdd, 0x1f, 0x7c, 0x40, 0x9c, 0xb1, 0xf2, 0xd8, 0x23,
-	0x06, 0xd3, 0xe5, 0x3b, 0x68, 0xfb, 0x23, 0xad, 0xb8, 0x2c, 0x6f, 0x23, 0x4e, 0x79, 0x97, 0xd0,
-	0xe5, 0xef, 0x10, 0x76, 0xc9, 0xcb, 0xed, 0xcd, 0x15, 0x9e, 0x90, 0x00, 0x4c, 0x95, 0xdb, 0x11,
-	0xc8, 0x69, 0xc3, 0x5b, 0xf4, 0x61, 0x51, 0x33, 0x2a, 0x98, 0x25, 0xc1, 0x63, 0x12, 0x60, 0xca,
-	0x6e, 0x02, 0x51, 0xb6, 0xdb, 0x63, 0x95, 0x06, 0x6e, 0x01, 0x66, 0xdc, 0x00, 0xca, 0x76, 0xbb,
-	0x62, 0x39, 0xf3, 0xdd, 0x02, 0xcc, 0xb8, 0x01, 0x94, 0x76, 0x3b, 0x47, 0x9f, 0x2d, 0x99, 0xb8,
-	0x6b, 0x4e, 0x03, 0xde, 0x27, 0xea, 0x9f, 0xea, 0xb7, 0x6f, 0x49, 0x3b, 0x9c, 0xbf, 0x69, 0x36,
-	0xac, 0x5c, 0xa2, 0x94, 0x0e, 0x89, 0x35, 0x32, 0x1b, 0xd6, 0x01, 0xbd, 0x78, 0xba, 0xad, 0xb3,
-	0xaa, 0x58, 0xb2, 0x62, 0x82, 0xcb, 0x78, 0x3c, 0xd0, 0x89, 0x27, 0xe0, 0xb4, 0xe1, 0xcf, 0xe8,
-	0x20, 0xe0, 0xdb, 0xc8, 0x4f, 0x08, 0x84, 0xeb, 0xd4, 0x4f, 0x63, 0xb4, 0x76, 0x7e, 0x44, 0x1f,
-	0xe5, 0x1a, 0x5c, 0x15, 0x3e, 0x26, 0x10, 0xac, 0x7c, 0x4f, 0x22, 0xac, 0x6d, 0x2b, 0x23, 0x0d,
-	0x6c, 0x21, 0xd8, 0xd8, 0xc2, 0xac, 0x6d, 0x2b, 0xb3, 0x0d, 0x6c, 0x21, 0xd8, 0xd8, 0xc2, 0x6c,
-	0x6f, 0x7b, 0xdb, 0xc3, 0x09, 0xb4, 0xd7, 0x3e, 0xa2, 0xa7, 0x31, 0x5a, 0x3b, 0x53, 0x34, 0x82,
-	0x24, 0x6d, 0x76, 0x33, 0x12, 0xa1, 0x74, 0x7c, 0x67, 0x3d, 0x0a, 0x5d, 0xe2, 0x37, 0xf4, 0x09,
-	0x0a, 0xa3, 0x39, 0x24, 0x53, 0x12, 0x61, 0x54, 0x81, 0x59, 0x5c, 0x60, 0xfb, 0x43, 0xa9, 0x48,
-	0xff, 0x08, 0x63, 0xfc, 0xa3, 0x02, 0xdb, 0x1f, 0x8a, 0x47, 0xfa, 0x47, 0x18, 0xe3, 0x1f, 0x15,
-	0xd8, 0x7b, 0xc6, 0xed, 0xe2, 0x53, 0xf3, 0x59, 0xe4, 0xf8, 0x98, 0x40, 0xb0, 0xd9, 0x33, 0x30,
-	0x6b, 0x4f, 0x1b, 0x50, 0xb4, 0xc1, 0x4e, 0x09, 0xcc, 0xa4, 0x66, 0xda, 0x51, 0x81, 0xf6, 0xff,
-	0x15, 0x1d, 0x06, 0xd9, 0xb4, 0x3a, 0x7c, 0x4a, 0x60, 0x42, 0xb9, 0x4f, 0xa3, 0xbc, 0x6d, 0x1e,
-	0x04, 0xa3, 0xcc, 0x61, 0xc2, 0x98, 0xc7, 0x78, 0xdb, 0x3c, 0x48, 0x45, 0x99, 0xc3, 0x84, 0x31,
-	0x8f, 0xf1, 0x3b, 0xda, 0xde, 0x1e, 0x56, 0xb0, 0xed, 0xf6, 0x71, 0x9d, 0xc5, 0x05, 0xda, 0xff,
-	0x15, 0x4d, 0x60, 0x51, 0x9b, 0xec, 0x9c, 0x44, 0x49, 0x1d, 0xee, 0xe7, 0xbd, 0x1a, 0x5d, 0x28,
-	0x45, 0x63, 0x38, 0xa6, 0x66, 0xe3, 0x9f, 0x91, 0x28, 0xa7, 0xca, 0xcc, 0xfb, 0x24, 0x76, 0x15,
-	0x38, 0x2f, 0x59, 0x25, 0xca, 0x99, 0x2a, 0x3d, 0x12, 0xbb, 0x0a, 0x1c, 0x9c, 0xac, 0x12, 0xe5,
-	0x4c, 0x95, 0x1e, 0x89, 0xae, 0xf2, 0x03, 0x1a, 0x74, 0x4b, 0x96, 0xb7, 0x54, 0x7c, 0x40, 0x9c,
-	0xb1, 0x72, 0x3b, 0xf4, 0x61, 0xed, 0xf0, 0x80, 0x86, 0x0e, 0xd5, 0xdd, 0x25, 0x8f, 0x08, 0x80,
-	0x2a, 0xb7, 0x63, 0x98, 0xd4, 0x9e, 0xdf, 0xa3, 0x77, 0x4d, 0xde, 0x1d, 0x4b, 0x05, 0xc5, 0x98,
-	0x18, 0x40, 0xb9, 0x0c, 0x1d, 0xcc, 0xbf, 0xd9, 0x3a, 0xb3, 0x19, 0x11, 0x1f, 0x72, 0x6f, 0xb6,
-	0x91, 0x79, 0xac, 0xd0, 0xd8, 0x67, 0x2f, 0xb7, 0xaa, 0x53, 0x71, 0xcf, 0x49, 0xc0, 0x70, 0xe8,
-	0x22, 0x67, 0xaf, 0x4f, 0x5d, 0xe4, 0x2c, 0xcc, 0xbf, 0xc8, 0x39, 0x94, 0xdd, 0x7e, 0x97, 0x56,
-	0xed, 0x07, 0x50, 0xd3, 0x7e, 0x90, 0xb4, 0x67, 0xb8, 0x64, 0xe2, 0xa7, 0x7f, 0xae, 0xd7, 0xf9,
-	0xef, 0x59, 0x9e, 0x37, 0x1a, 0x8e, 0xdb, 0x46, 0xb9, 0x98, 0xb3, 0x5e, 0x9f, 0xf2, 0xbe, 0x15,
-	0x0e, 0xdd, 0x1c, 0x5b, 0xf9, 0xad, 0x08, 0x60, 0xe7, 0x5b, 0x01, 0xb0, 0xe1, 0xbe, 0x73, 0x44,
-	0x7a, 0xdf, 0x39, 0xa8, 0xbf, 0xef, 0x3c, 0x32, 0x6c, 0xa6, 0xef, 0x09, 0xa0, 0x7e, 0x33, 0x63,
-	0x9e, 0x15, 0x3a, 0x59, 0x32, 0xf1, 0xc4, 0x8a, 0xb4, 0xac, 0x57, 0xeb, 0x97, 0xaa, 0x2e, 0x37,
-	0x59, 0x91, 0xb0, 0x45, 0xf7, 0xb8, 0xe3, 0xf8, 0x0b, 0xd2, 0xcb, 0xab, 0x3a, 0xe7, 0xbb, 0x64,
-	0xba, 0xe2, 0x16, 0xcd, 0xfa, 0xa4, 0xed, 0x7f, 0xba, 0x17, 0x64, 0x87, 0x44, 0x07, 0xf1, 0xd5,
-	0xff, 0x50, 0xea, 0xd2, 0x1b, 0x34, 0x95, 0x1d, 0x8e, 0xfe, 0x00, 0x7f, 0x49, 0x76, 0x28, 0x54,
-	0xe1, 0x8b, 0xdd, 0x42, 0xbb, 0xae, 0x4c, 0xa1, 0xaf, 0xee, 0x0e, 0x85, 0xa9, 0xbb, 0x53, 0x68,
-	0x3f, 0x4a, 0x16, 0xdd, 0xb3, 0xff, 0x89, 0xe6, 0x59, 0x4a, 0x9b, 0x47, 0x3c, 0x9e, 0x90, 0x10,
-	0x34, 0x8f, 0x12, 0x88, 0x53, 0x86, 0x97, 0xef, 0x7f, 0x19, 0xe4, 0xcd, 0x1b, 0xbf, 0xfb, 0xfb,
-	0x05, 0x7f, 0x79, 0xdb, 0x3e, 0xfe, 0xbf, 0xf9, 0x2f, 0x00, 0x00, 0xff, 0xff, 0xb1, 0x9c, 0xa0,
-	0xf7, 0xd2, 0x10, 0x00, 0x00,
+var fileDescriptor_service_4258613a39d9a472 = []byte{
+	// 1154 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x84, 0x58, 0x5d, 0x6f, 0x1c, 0x35,
+	0x14, 0xed, 0x53, 0x85, 0x1c, 0x2d, 0x4d, 0xbd, 0x4d, 0xb2, 0xd9, 0x7c, 0x36, 0x48, 0x3c, 0x21,
+	0x3f, 0x80, 0x78, 0x81, 0x17, 0xc8, 0x46, 0x8d, 0x2a, 0xb5, 0x4a, 0x94, 0xd0, 0x0a, 0x81, 0x44,
+	0x64, 0x66, 0x4d, 0x18, 0x31, 0xec, 0x0c, 0x33, 0xde, 0x88, 0xfd, 0x69, 0xfc, 0x3b, 0x34, 0xe3,
+	0xb1, 0xef, 0xbd, 0xf6, 0xf5, 0xf6, 0x2d, 0x3e, 0xe7, 0xe4, 0xdc, 0x19, 0x1f, 0x5f, 0xaf, 0x3d,
+	0x62, 0xd2, 0x99, 0xf6, 0xa9, 0x2c, 0x8c, 0x6a, 0xda, 0xda, 0xd6, 0xf3, 0x49, 0xd3, 0xd6, 0xcb,
+	0x75, 0x61, 0xc7, 0xe1, 0x74, 0x1c, 0x3e, 0x34, 0x2d, 0x68, 0xf6, 0x3d, 0xd8, 0x35, 0xa6, 0x78,
+	0xe8, 0x8c, 0x17, 0xcf, 0x08, 0xfe, 0xa4, 0xab, 0xb5, 0xff, 0x8f, 0x9d, 0xba, 0x5d, 0x9a, 0x36,
+	0x94, 0xd0, 0x9b, 0xbf, 0xcd, 0xca, 0xff, 0xd7, 0x6e, 0xa1, 0xad, 0x79, 0xac, 0xdb, 0xd2, 0x74,
+	0x23, 0xf2, 0xd2, 0xb6, 0x7a, 0xd5, 0xe9, 0xc2, 0x96, 0xf5, 0xca, 0x3f, 0x87, 0x6e, 0x8d, 0x7e,
+	0x28, 0xea, 0x27, 0xd3, 0xea, 0xc7, 0xf0, 0x1c, 0xc5, 0x9f, 0xa6, 0xf8, 0xab, 0x5e, 0xdb, 0x72,
+	0x65, 0x4d, 0xbb, 0xd2, 0x95, 0xc3, 0xbf, 0xfe, 0xef, 0x2b, 0x31, 0x79, 0x57, 0x17, 0xba, 0xba,
+	0x77, 0xaf, 0xd6, 0xc9, 0xef, 0xc4, 0xce, 0xb5, 0xb1, 0xb7, 0xee, 0xf1, 0x3a, 0x39, 0x55, 0x68,
+	0x74, 0x67, 0xfe, 0x59, 0x9b, 0xce, 0xce, 0x5f, 0x51, 0xb0, 0x6b, 0xea, 0x55, 0x67, 0x2e, 0x9e,
+	0xc9, 0x85, 0xf8, 0x1c, 0x88, 0xcb, 0xcd, 0xdb, 0x2b, 0xb9, 0xaf, 0x08, 0xb0, 0xf4, 0x0e, 0x07,
+	0x09, 0x1e, 0x4c, 0x7e, 0x10, 0x93, 0x45, 0x6b, 0xb4, 0x35, 0x23, 0x2d, 0xf7, 0x14, 0x19, 0x7b,
+	0x8b, 0xfd, 0x18, 0xc6, 0x0e, 0x1f, 0x9a, 0x25, 0x71, 0x20, 0x63, 0x70, 0x88, 0x60, 0xec, 0x70,
+	0x65, 0x2a, 0x83, 0x1d, 0xc8, 0x18, 0x1c, 0x22, 0x38, 0x38, 0xbc, 0x15, 0xbb, 0xf0, 0x86, 0x57,
+	0xc6, 0xea, 0xb2, 0x92, 0x33, 0x15, 0x43, 0xde, 0xe7, 0x90, 0x61, 0x82, 0xd5, 0x1b, 0xf1, 0x02,
+	0xd8, 0xdb, 0x7e, 0x71, 0x49, 0x3c, 0x7d, 0x03, 0xe2, 0x8d, 0x66, 0x29, 0xc1, 0xa7, 0xf3, 0x5e,
+	0x37, 0x1d, 0x49, 0xa7, 0x07, 0xb8, 0x74, 0x1c, 0x1e, 0x4c, 0xde, 0x89, 0x97, 0x84, 0x1b, 0x52,
+	0x3e, 0x54, 0x31, 0x16, 0x82, 0x9e, 0x73, 0x14, 0x9e, 0x25, 0x12, 0xe2, 0x7b, 0xdd, 0xc8, 0x99,
+	0x8a, 0x21, 0x98, 0xa5, 0x94, 0xc1, 0x56, 0x24, 0x4d, 0x67, 0x15, 0x43, 0x60, 0x95, 0x32, 0xd8,
+	0x8a, 0xc4, 0xea, 0xac, 0x62, 0x08, 0xac, 0x52, 0x26, 0x58, 0x7d, 0x2b, 0x26, 0xd7, 0xc6, 0x2e,
+	0x42, 0xdb, 0xca, 0x3d, 0x45, 0xc6, 0xde, 0x64, 0x47, 0x01, 0x16, 0x22, 0x1f, 0xa1, 0xcd, 0x90,
+	0xd5, 0x81, 0x8a, 0x10, 0x12, 0x39, 0x25, 0x42, 0xf9, 0x1b, 0x21, 0x29, 0x39, 0xc4, 0x35, 0x57,
+	0x09, 0x18, 0xf2, 0x3a, 0x62, 0x39, 0x1c, 0xbf, 0xcb, 0x00, 0x49, 0xa4, 0xcf, 0x05, 0x61, 0x10,
+	0x3f, 0x43, 0x61, 0x37, 0x17, 0x03, 0x75, 0x4b, 0x30, 0x70, 0x63, 0x28, 0xec, 0xe6, 0x92, 0xa0,
+	0x6e, 0x09, 0x06, 0x6e, 0x0c, 0x15, 0xdc, 0xbe, 0x14, 0x9f, 0x5d, 0x1b, 0x7b, 0xd3, 0x6f, 0xc6,
+	0x72, 0x57, 0xf9, 0x3f, 0xfd, 0xff, 0x3e, 0x57, 0xc3, 0xf0, 0xe2, 0x59, 0xbf, 0x5f, 0xba, 0x57,
+	0x74, 0xd2, 0xa9, 0x42, 0x23, 0xd8, 0x2f, 0x09, 0x18, 0xc5, 0x33, 0x2e, 0x9c, 0xfb, 0xc6, 0x14,
+	0xf7, 0xc6, 0x76, 0x12, 0xb7, 0x8c, 0x07, 0x49, 0x3c, 0x09, 0x17, 0x0c, 0x7f, 0x16, 0x7b, 0x09,
+	0x3f, 0x44, 0x7e, 0xa2, 0x38, 0x3c, 0xa4, 0x7e, 0x9a, 0xa3, 0x83, 0xf3, 0x07, 0xf1, 0x8a, 0x34,
+	0xdf, 0xa8, 0x92, 0xc7, 0x8a, 0x83, 0xbd, 0xef, 0x49, 0x86, 0xc5, 0xb6, 0xa4, 0x11, 0xc1, 0x96,
+	0x83, 0xc1, 0x96, 0x67, 0xb1, 0x2d, 0x69, 0x4a, 0xb0, 0xe5, 0x60, 0xb0, 0xe5, 0xd9, 0xad, 0xd3,
+	0x3b, 0x34, 0x27, 0x33, 0xbd, 0xb8, 0x45, 0x4f, 0x73, 0x74, 0x70, 0xd6, 0x62, 0xc6, 0x49, 0x86,
+	0xec, 0xce, 0x55, 0x86, 0x0a, 0xf1, 0xbd, 0xde, 0xa2, 0x08, 0x25, 0x7e, 0x13, 0x07, 0x5c, 0x18,
+	0x7d, 0x93, 0x9c, 0xa9, 0x0c, 0xe3, 0x0b, 0x9c, 0xe7, 0x05, 0xd8, 0x9f, 0x4b, 0xc5, 0xf9, 0x67,
+	0x18, 0xf0, 0xcf, 0x0a, 0xb0, 0x3f, 0x17, 0x8f, 0xf3, 0xcf, 0x30, 0xe0, 0x9f, 0x15, 0xe0, 0x35,
+	0x43, 0x67, 0xf1, 0x63, 0x7f, 0x2a, 0xeb, 0xe4, 0xb1, 0xe2, 0x60, 0x58, 0x33, 0x3c, 0x8b, 0x1f,
+	0x9b, 0x51, 0x0c, 0xc1, 0x9e, 0x29, 0x9e, 0x59, 0xc2, 0x63, 0x67, 0x05, 0xc1, 0xff, 0x57, 0xb1,
+	0x9f, 0x64, 0x33, 0xe8, 0xe4, 0xa9, 0xe2, 0x09, 0xef, 0x7e, 0x96, 0xe5, 0xb1, 0x79, 0x12, 0x8c,
+	0x37, 0xe7, 0x09, 0x30, 0xcf, 0xf1, 0xd8, 0x3c, 0x49, 0xc5, 0x9b, 0xf3, 0x04, 0x98, 0xe7, 0xf8,
+	0x4f, 0x4c, 0xfb, 0xd0, 0xac, 0xec, 0xb4, 0xe3, 0x76, 0x3d, 0xcf, 0x0b, 0x82, 0xff, 0xa3, 0x98,
+	0xf3, 0xa2, 0x21, 0xd9, 0x0b, 0x95, 0x25, 0x43, 0xb8, 0x5f, 0x6c, 0xd5, 0x84, 0x42, 0x4b, 0x71,
+	0xc8, 0xc7, 0xd4, 0x2f, 0xfc, 0xd7, 0x2a, 0xcb, 0xf9, 0x32, 0x17, 0xdb, 0x24, 0xb8, 0x0a, 0x9f,
+	0x97, 0xab, 0x92, 0xe5, 0xa0, 0xca, 0x16, 0x09, 0xae, 0xc2, 0x07, 0xe7, 0xaa, 0x64, 0x39, 0xa8,
+	0xb2, 0x45, 0xc2, 0x5c, 0x20, 0xdc, 0xe5, 0x09, 0x2e, 0x10, 0x6e, 0x9c, 0x5c, 0x20, 0x3c, 0x1c,
+	0x1c, 0xee, 0xc4, 0x94, 0x50, 0xe3, 0xf9, 0xfd, 0x48, 0x31, 0xa8, 0x77, 0x3b, 0xe6, 0xc9, 0xe0,
+	0xf9, 0xbd, 0x3b, 0x7d, 0x8f, 0xac, 0xb6, 0x5a, 0x4a, 0x05, 0x80, 0x77, 0x99, 0x12, 0x2c, 0xbe,
+	0x4d, 0x90, 0xa7, 0x99, 0xa9, 0x18, 0xa2, 0xb7, 0x89, 0xcc, 0x73, 0xdc, 0x8b, 0xc3, 0x98, 0xbd,
+	0xdc, 0xf8, 0x99, 0xca, 0x7b, 0xce, 0x13, 0xa6, 0xe3, 0x0e, 0x72, 0xf8, 0xfd, 0xc2, 0x19, 0x1b,
+	0xb0, 0xf8, 0x20, 0x47, 0x28, 0x3c, 0xfd, 0x94, 0xf6, 0xd3, 0xcf, 0xa0, 0x30, 0xfd, 0x2c, 0x19,
+	0xdd, 0x5b, 0x7e, 0xfa, 0xf7, 0xcd, 0xba, 0xfa, 0xa3, 0xac, 0xaa, 0x5e, 0xd3, 0xb9, 0x7b, 0x0b,
+	0xc5, 0xc8, 0xfb, 0xc6, 0x54, 0xf4, 0x5b, 0x41, 0xe8, 0xbe, 0x6d, 0xdd, 0x6f, 0x45, 0x02, 0x93,
+	0xdf, 0x0a, 0x86, 0x4d, 0xd7, 0x1d, 0x11, 0x85, 0x75, 0x47, 0xd0, 0x78, 0xdd, 0x45, 0x64, 0x3a,
+	0x99, 0xb1, 0x27, 0x83, 0xc6, 0x93, 0x99, 0xf3, 0x74, 0x9b, 0xeb, 0x8f, 0xad, 0xd1, 0xb7, 0x6d,
+	0xfd, 0x54, 0xae, 0x8a, 0xbe, 0x03, 0x9b, 0x72, 0xf5, 0x38, 0x6e, 0xae, 0x1c, 0x43, 0x36, 0x57,
+	0x5e, 0x10, 0x6d, 0xae, 0x8c, 0x08, 0x36, 0x57, 0x9e, 0xa4, 0x9b, 0x6b, 0x56, 0x93, 0x6e, 0xae,
+	0x8c, 0x34, 0x6c, 0xae, 0x0c, 0x17, 0x6f, 0xae, 0xac, 0x24, 0xdd, 0x5c, 0xf9, 0x2a, 0x59, 0x2e,
+	0xde, 0x5c, 0x3f, 0x59, 0xc5, 0xed, 0x8e, 0x7c, 0x95, 0x2c, 0x17, 0x6f, 0xae, 0xdb, 0xab, 0xdc,
+	0x89, 0xe9, 0x38, 0xb3, 0x8b, 0xd2, 0x6e, 0x42, 0xec, 0x47, 0x8a, 0x41, 0x61, 0x39, 0xb1, 0x24,
+	0x3e, 0x08, 0xa4, 0x82, 0x21, 0xea, 0x53, 0xc5, 0x12, 0x4b, 0x38, 0x08, 0xe4, 0x78, 0x7c, 0x66,
+	0x87, 0x8c, 0x90, 0x4c, 0x9e, 0x28, 0x16, 0x87, 0x33, 0x7b, 0x86, 0xc6, 0xce, 0x90, 0x0b, 0x75,
+	0x66, 0x71, 0x70, 0xce, 0xd0, 0xd8, 0x19, 0xb2, 0xa0, 0xce, 0x2c, 0x0e, 0xce, 0x19, 0x9a, 0xe9,
+	0xdc, 0xab, 0xb2, 0xb3, 0x6d, 0x39, 0x7c, 0xaf, 0x88, 0x3a, 0x37, 0x66, 0x92, 0xce, 0x4d, 0x05,
+	0x4c, 0xe7, 0x46, 0x22, 0xda, 0xb9, 0x29, 0x99, 0x76, 0x2e, 0xab, 0xe1, 0x3b, 0x37, 0x92, 0x92,
+	0xce, 0x8d, 0x38, 0xae, 0x73, 0x13, 0x09, 0xdf, 0xb9, 0x69, 0x95, 0x2c, 0xc7, 0x75, 0xee, 0xd6,
+	0x2a, 0x90, 0x5b, 0x5a, 0x25, 0xcb, 0x71, 0x9d, 0x9b, 0xaf, 0x72, 0x23, 0xe4, 0x62, 0xfc, 0x08,
+	0xfc, 0x51, 0x57, 0xe5, 0x52, 0xdb, 0xb2, 0x5e, 0xc9, 0xb9, 0x4a, 0x41, 0xf8, 0xd8, 0xc0, 0x71,
+	0xde, 0xf0, 0xf2, 0xc5, 0x2f, 0x93, 0xaa, 0x2e, 0x74, 0x35, 0x7e, 0x15, 0xef, 0x7e, 0x7f, 0x3e,
+	0x7c, 0x53, 0xfe, 0xe6, 0xff, 0x00, 0x00, 0x00, 0xff, 0xff, 0xc5, 0x3d, 0x0f, 0xae, 0x28, 0x17,
+	0x00, 0x00,
 }
